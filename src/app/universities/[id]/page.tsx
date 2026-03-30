@@ -1,11 +1,11 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import Image from 'next/image'
 import { createClient } from '@/lib/supabase/server'
 import StarRating from '@/components/StarRating'
 import ReviewCard from '@/components/ReviewCard'
 import ReviewFormToggle from '@/app/dorms/[id]/ReviewFormToggle'
 import { STATIC_UNIVERSITIES } from '@/lib/staticData'
+import { proxyImage } from '@/lib/utils'
 import type { Metadata } from 'next'
 
 type Props = { params: Promise<{ id: string }> }
@@ -69,14 +69,11 @@ export default async function UniDetailPage({ params }: Props) {
       {images.length > 0 && (
         <div className={`grid gap-3 mb-8 ${images.length === 1 ? 'grid-cols-1' : images.length === 2 ? 'grid-cols-2' : 'grid-cols-3'}`}>
           {images.map((src, i) => (
-            <div key={i} className={`relative rounded-xl overflow-hidden bg-gray-100 ${images.length === 1 ? 'h-72' : 'h-48'}`}>
-              <Image
-                src={src}
+            <div key={i} className={`rounded-xl overflow-hidden bg-gray-100 ${images.length === 1 ? 'h-72' : 'h-48'}`}>
+              <img
+                src={proxyImage(src)}
                 alt={`${name} - photo ${i + 1}`}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 33vw"
-                unoptimized
+                className="w-full h-full object-cover"
               />
             </div>
           ))}

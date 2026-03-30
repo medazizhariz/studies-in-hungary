@@ -33,6 +33,7 @@ export type University = {
   programs: string[] | null
   languages: string[] | null
   logo_url: string | null
+  image_url?: string | null
   created_at: string
   avg_rating?: number | null
   review_count?: number | null

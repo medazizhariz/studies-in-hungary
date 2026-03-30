@@ -30,7 +30,7 @@ export default async function UniversitiesPage({ searchParams }: Props) {
     : STATIC_UNIVERSITIES.map((u) => ({
         id: u.id, name: u.name, city: u.city, description: u.description,
         website: u.website, programs: u.programs, languages: u.languages,
-        logo_url: u.logo_url, created_at: '',
+        logo_url: u.logo_url, image_url: u.images?.[0] ?? null, created_at: '',
         avg_rating: u.avg_rating, review_count: u.review_count,
       }))
 

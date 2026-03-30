@@ -1,3 +1,12 @@
+/** Proxies Wikipedia images through weserv.nl to bypass hotlink restrictions */
+export function proxyImage(url: string): string {
+  if (url.includes('upload.wikimedia.org')) {
+    const clean = url.replace(/^https?:\/\//, '')
+    return `https://images.weserv.nl/?url=${clean}&w=800&output=jpg`
+  }
+  return url
+}
+
 export function formatDate(dateStr: string) {
   return new Date(dateStr).toLocaleDateString('en-US', {
     year: 'numeric',
