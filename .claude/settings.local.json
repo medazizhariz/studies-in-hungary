@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm list:*)",
+      "WebFetch(domain:studyinhungary.hu)",
+      "WebFetch(domain:en.wikipedia.org)",
+      "WebFetch(domain:stipendiumhungaricum.hu)",
+      "WebSearch",
+      "WebFetch(domain:commons.wikimedia.org)",
+      "Bash(npx tsc:*)",
+      "Bash(gh auth:*)",
+      "Bash(git --version)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
+    ]
+  }
+}

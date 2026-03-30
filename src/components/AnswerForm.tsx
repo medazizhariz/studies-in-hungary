@@ -1,0 +1,63 @@
+'use client'
+
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { createClient } from '@/lib/supabase/client'
+import Link from 'next/link'
+
+type Props = { questionId: string; userId: string | null }
+
+export default function AnswerForm({ questionId, userId }: Props) {
+  const router = useRouter()
+  const supabase = createClient()
+  const [body, setBody] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+
+  if (!userId) {
+    return (
+      <div className="card p-5 text-center text-sm text-gray-500">
+        <Link href="/auth/login" className="text-primary-600 font-semibold hover:underline">Sign in</Link> to post an answer.
+      </div>
+    )
+  }
+
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!body.trim()) { setError('Answer cannot be empty.'); return }
+    setLoading(true)
+    setError('')
+
+    const { error: err } = await supabase.from('answers').insert({
+      question_id: questionId,
+      user_id: userId,
+      body: body.trim(),
+    })
+
+    if (err) {
+      setError(err.message)
+      setLoading(false)
+    } else {
+      setBody('')
+      router.refresh()
+    }
+  }
+
+  return (
+    <form onSubmit={submit} className="space-y-3">
+      <textarea
+        className="input resize-none h-32"
+        placeholder="Write a detailed answer to help other students..."
+        value={body}
+        onChange={(e) => setBody(e.target.value)}
+        maxLength={3000}
+      />
+      {error && <p className="text-sm text-red-600">{error}</p>}
+      <div className="flex justify-end">
+        <button type="submit" disabled={loading} className="btn-primary">
+          {loading ? 'Posting…' : 'Post Answer'}
+        </button>
+      </div>
+    </form>
+  )
+}
