@@ -3,7 +3,7 @@ export const dynamic = 'force-dynamic'
 import { createClient } from '@/lib/supabase/server'
 import DormCard from '@/components/DormCard'
 import { CITIES } from '@/lib/utils'
-import { STATIC_DORMS } from '@/lib/staticData'
+import { STATIC_DORMS, STATIC_UNIVERSITIES } from '@/lib/staticData'
 import type { Dorm } from '@/types'
 import type { Metadata } from 'next'
 
@@ -32,6 +32,10 @@ export default async function DormsPage({ searchParams }: Props) {
         price_min: d.price_min, price_max: d.price_max, description: d.description,
         amenities: d.amenities, images: d.images, website: d.website,
         created_at: '', avg_rating: d.avg_rating, review_count: d.review_count,
+        affiliatedUniversity: d.affiliatedUniversity ?? null,
+        affiliatedUniversityName: d.affiliatedUniversity
+          ? (STATIC_UNIVERSITIES.find((u) => u.id === d.affiliatedUniversity)?.name ?? null)
+          : null,
       }))
 
   // Apply client-side filters for static data

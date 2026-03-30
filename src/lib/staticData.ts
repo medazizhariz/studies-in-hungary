@@ -26,6 +26,7 @@ export type StaticUniversity = {
   website: string
   logo_url: string | null
   images: string[]
+  imageCaptions?: string[]
   avg_rating: number
   review_count: number
   reviews: StaticReview[]
@@ -54,6 +55,8 @@ export type StaticDorm = {
   distance: string
   amenities: string[]
   images: string[]
+  imageCaptions?: string[]
+  affiliatedUniversity?: string
   website: string | null
   avg_rating: number
   review_count: number
@@ -106,6 +109,17 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
       'https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Egyetemi_K%C3%B6nyvt%C3%A1r1.JPG/800px-Egyetemi_K%C3%B6nyvt%C3%A1r1.JPG',
       'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Egyetemi_K%C3%B6nyvt%C3%A1r2.JPG/800px-Egyetemi_K%C3%B6nyvt%C3%A1r2.JPG',
       'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Egyetemi_K%C3%B6nyvt%C3%A1r3.JPG/800px-Egyetemi_K%C3%B6nyvt%C3%A1r3.JPG',
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/ELTE_Lágymányos_campus.jpg/800px-ELTE_Lágymányos_campus.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Elte_btkepulet.jpg/800px-Elte_btkepulet.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/ELTE_IK_Pazm%C3%A1ny_P%C3%A9ter_s%C3%A9t%C3%A1ny.jpg/800px-ELTE_IK_Pazm%C3%A1ny_P%C3%A9ter_s%C3%A9t%C3%A1ny.jpg',
+    ],
+    imageCaptions: [
+      'University Library — Faculty of Law & Humanities',
+      'University Library — Historic Exterior',
+      'University Library — Reading Room Interior',
+      'Lágymányos Campus — Faculty of Science & Informatics',
+      'Faculty of Humanities (BTK) Building',
+      'Faculty of Informatics — Pázmány Péter sétány',
     ],
     facultyLinks: [
       { name: 'Faculty of Law', url: 'https://ajk.elte.hu' },
@@ -141,6 +155,15 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
       'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/BME_K_building.png/800px-BME_K_building.png',
       'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/BME_f%C5%91bej%C3%A1rat.jpg/800px-BME_f%C5%91bej%C3%A1rat.jpg',
       'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Panorama_BME.jpg/800px-Panorama_BME.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/BME_E_epulet.jpg/800px-BME_E_epulet.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/BME_Lagymanyos_campus.jpg/800px-BME_Lagymanyos_campus.jpg',
+    ],
+    imageCaptions: [
+      'Faculty of Electrical Engineering (K Building)',
+      'Main Entrance — Central Building',
+      'Campus Panoramic View from the Danube',
+      'Faculty of Civil Engineering (E Building)',
+      'Lágymányos Campus — Riverside',
     ],
     facultyLinks: [
       { name: 'Faculty of Civil Engineering', url: 'https://www.emk.bme.hu' },
@@ -176,6 +199,13 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
       'https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Face_of_Corvinus_University_at_Night.JPG/800px-Face_of_Corvinus_University_at_Night.JPG',
       'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Corvinus_foepulet.jpg/800px-Corvinus_foepulet.jpg',
       'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Budapesti_Corvinus_Egyetem_%C3%BAj_%C3%A9p%C3%BClete_corrected%26cropped.jpg/800px-Budapesti_Corvinus_Egyetem_%C3%BAj_%C3%A9p%C3%BClete_corrected%26cropped.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Corvinus_University_Fovam_ter.jpg/800px-Corvinus_University_Fovam_ter.jpg',
+    ],
+    imageCaptions: [
+      'Main Building at Night — Fővám tér',
+      'Main Building Facade — Faculty of Economics',
+      'Faculty of Business Administration — New Building',
+      'Historic Main Building — Fővám tér Campus',
     ],
     facultyLinks: [
       { name: 'Faculty of Economics', url: 'https://www.uni-corvinus.hu/en/faculties-and-institutes/faculty-of-economics/' },
@@ -207,6 +237,13 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
       'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Nagyvarad_ter_uvegfal.jpg/800px-Nagyvarad_ter_uvegfal.jpg',
       'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Basic_medical_science_center_aula%2C_Semmelweis_University%2C_Budapest.jpg/800px-Basic_medical_science_center_aula%2C_Semmelweis_University%2C_Budapest.jpg',
       'https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Fogorvostudom%C3%A1nyi_Oktat%C3%A1si_Centrum.jpg/800px-Fogorvostudom%C3%A1nyi_Oktat%C3%A1si_Centrum.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Semmelweis_University_Budapest_Hungary.jpg/800px-Semmelweis_University_Budapest_Hungary.jpg',
+    ],
+    imageCaptions: [
+      'Faculty of Medicine — Nagyvárad tér Campus (Glass Facade)',
+      'Faculty of Medicine — Basic Medical Science Center Atrium',
+      'Faculty of Dentistry — Educational & Clinical Center',
+      'Semmelweis University — Historic Main Building',
     ],
     facultyLinks: [
       { name: 'Faculty of Medicine', url: 'https://semmelweis.hu/en/faculties/faculty-of-medicine/' },
@@ -240,6 +277,11 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
       'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Central_European_University._-_Frankel_Le%C3%B3_Street%2C_2016_Budapest.jpg/800px-Central_European_University._-_Frankel_Le%C3%B3_Street%2C_2016_Budapest.jpg',
       'https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/K%C3%B6z%C3%A9p-eur%C3%B3pai_Egyetem%2C_Oktober_6._utca%2C_2017_Lip%C3%B3tv%C3%A1ros.jpg/800px-K%C3%B6z%C3%A9p-eur%C3%B3pai_Egyetem%2C_Oktober_6._utca%2C_2017_Lip%C3%B3tv%C3%A1ros.jpg',
     ],
+    imageCaptions: [
+      'Nádor Street 9 — School of Public Policy & Departments',
+      'Frankel Leó Street Campus — Graduate Buildings',
+      'October 6 Street Campus — Central Library & Classrooms',
+    ],
     facultyLinks: [
       { name: 'Department of Economics', url: 'https://economics.ceu.edu' },
       { name: 'Department of Political Science', url: 'https://politicalscience.ceu.edu' },
@@ -271,6 +313,11 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
     logo_url: null,
     images: [
       'https://upload.wikimedia.org/wikipedia/en/thumb/3/38/Budapestikomm1.jpg/800px-Budapestikomm1.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Budapest_Metropolitan_University_campus.jpg/800px-Budapest_Metropolitan_University_campus.jpg',
+    ],
+    imageCaptions: [
+      'Faculty of Arts, Design and Architecture — Main Building',
+      'Budapest Metropolitan University — Campus Exterior',
     ],
     facultyLinks: [
       { name: 'Faculty of Arts, Design and Architecture', url: 'https://metropolitan.hu/en/courses/arts-design-architecture/' },
@@ -304,6 +351,11 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
       'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Kir%C3%A1lyok_Stra%C3%9Fe_33%2C_2025_Csillaghegy.jpg/800px-Kir%C3%A1lyok_Stra%C3%9Fe_33%2C_2025_Csillaghegy.jpg',
       'https://upload.wikimedia.org/wikipedia/commons/0/07/M%C3%81V_V43_loco_in_the_Uni_garden_and_traffic_control_along_tram_tracks%2C_2018_%C3%93buda-B%C3%A9k%C3%A1smegyer.jpg',
     ],
+    imageCaptions: [
+      'Kandó Kálmán Faculty of Electrical Engineering — Main Building',
+      'Bánki Donát Faculty of Mechanical Engineering — Csillaghegy Campus',
+      'University Garden — Óbuda Campus',
+    ],
     facultyLinks: [
       { name: 'Kandó Kálmán Faculty of Electrical Engineering', url: 'https://kando.uni-obuda.hu' },
       { name: 'Bánki Donát Faculty of Mechanical Engineering', url: 'https://banki.uni-obuda.hu' },
@@ -334,6 +386,12 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
     images: [
       'https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Department_of_Pharmacology_and_Toxicology%2C_UVS_S_Bldg.%2C_2016_Erzs%C3%A9betv%C3%A1ros.jpg/800px-Department_of_Pharmacology_and_Toxicology%2C_UVS_S_Bldg.%2C_2016_Erzs%C3%A9betv%C3%A1ros.jpg',
       'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Dembinszky_Stra%C3%9Fe_Uni%2C_Treppe%2C_2022_Erzs%C3%A9betv%C3%A1ros.jpg/800px-Dembinszky_Stra%C3%9Fe_Uni%2C_Treppe%2C_2022_Erzs%C3%A9betv%C3%A1ros.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/University_of_Veterinary_Medicine_Budapest_Hungary.jpg/800px-University_of_Veterinary_Medicine_Budapest_Hungary.jpg',
+    ],
+    imageCaptions: [
+      'Faculty of Veterinary Science — Department of Pharmacology & Toxicology',
+      'Faculty of Veterinary Science — Historic Staircase Hall',
+      'University of Veterinary Medicine — Campus Exterior',
     ],
     facultyLinks: [
       { name: 'Faculty of Veterinary Science', url: 'https://univet.hu/en/university/faculties/' },
@@ -362,6 +420,10 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
     images: [
       'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Magyar_K%C3%A9pz%C5%91m%C5%B1v%C3%A9szeti_Egyetem.JPG/800px-Magyar_K%C3%A9pz%C5%91m%C5%B1v%C3%A9szeti_Egyetem.JPG',
       'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/K%C3%A9pz%C5%91m%C5%B1v%C3%A9szeti_F%C5%91iskola_%28715._sz%C3%A1m%C3%BA_m%C5%B1eml%C3%A9k%29_2.jpg/800px-K%C3%A9pz%C5%91m%C5%B1v%C3%A9szeti_F%C5%91iskola_%28715._sz%C3%A1m%C3%BA_m%C5%B1eml%C3%A9k%29_2.jpg',
+    ],
+    imageCaptions: [
+      'Hungarian University of Fine Arts — Historic Building Facade',
+      'Fine Arts University — Building Architectural Detail',
     ],
     facultyLinks: [
       { name: 'Department of Painting', url: 'https://mke.hu/intezetek/festeszeti-intezet/' },
@@ -395,6 +457,10 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
       'https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Liszt_Ferenc_Zenem%C5%B1v%C3%A9szeti_Egyetem_2013-ban_fel%C3%BAj%C3%ADtott_homlokzata.JPG/800px-Liszt_Ferenc_Zenem%C5%B1v%C3%A9szeti_Egyetem_2013-ban_fel%C3%BAj%C3%ADtott_homlokzata.JPG',
       'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Liszt_Ferenc_Zenem%C5%B1v%C3%A9szeti_Egyetem_2013-ban_fel%C3%BAj%C3%ADtott_nagyterem.JPG/800px-Liszt_Ferenc_Zenem%C5%B1v%C3%A9szeti_Egyetem_2013-ban_fel%C3%BAj%C3%ADtott_nagyterem.JPG',
     ],
+    imageCaptions: [
+      'Art Nouveau Main Facade — Liszt Ferenc tér',
+      'Grand Concert Hall — Interior (Nagyterem)',
+    ],
     facultyLinks: [
       { name: 'Department of Piano', url: 'https://lfze.hu/tanszekek/zongora-tanszek' },
       { name: 'Department of Strings', url: 'https://lfze.hu/tanszekek/vonos-tanszek' },
@@ -426,6 +492,11 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
     logo_url: null,
     images: [
       'https://upload.wikimedia.org/wikipedia/commons/6/6d/Szinhaz-es-Filmmuv-Egy_Rakoczi-ut-21_0313-1000.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/SZFE_belso.jpg/800px-SZFE_belso.jpg',
+    ],
+    imageCaptions: [
+      'University of Theatre and Film Arts — Main Building (Rákóczi út)',
+      'SZFE — Interior Corridor & Department of Acting',
     ],
     facultyLinks: [
       { name: 'Department of Directing', url: 'https://szfe.hu/kepzesek/rendezo/' },
@@ -459,6 +530,10 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
       'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/IBS_International_Business_School_Budapest_campus_main_building.jpg/800px-IBS_International_Business_School_Budapest_campus_main_building.jpg',
       'https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/IBS_International_Business_School_Budapest_campus.jpg/800px-IBS_International_Business_School_Budapest_campus.jpg',
     ],
+    imageCaptions: [
+      'IBS Campus — School of Business & Finance Main Building',
+      'IBS Campus — School of Management & Courtyard',
+    ],
     facultyLinks: [
       { name: 'School of Business', url: 'https://ibs-b.hu/en/undergraduate-programmes/' },
       { name: 'School of Finance', url: 'https://ibs-b.hu/en/undergraduate-programmes/' },
@@ -487,6 +562,13 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
     logo_url: null,
     images: [
       'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Piliscsaba_Stephaneum_d%C3%A9li_oldal.JPG/800px-Piliscsaba_Stephaneum_d%C3%A9li_oldal.JPG',
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/PPKE_BTK_Piliscsaba.jpg/800px-PPKE_BTK_Piliscsaba.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Pazmany_Peter_Catholic_University_Budapest.jpg/800px-Pazmany_Peter_Catholic_University_Budapest.jpg',
+    ],
+    imageCaptions: [
+      'Stephaneum Building — Faculty of Humanities (Piliscsaba)',
+      'Faculty of Humanities — Campus Buildings',
+      'Faculty of Law & Faculty of Information Technology — Budapest Campus',
     ],
     facultyLinks: [
       { name: 'Faculty of Law and Political Sciences', url: 'https://jak.ppke.hu' },
@@ -518,6 +600,11 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
     logo_url: null,
     images: [
       'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Ludovika_frontispiece.jpg/800px-Ludovika_frontispiece.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Ludovika_Academy_Budapest_2.jpg/800px-Ludovika_Academy_Budapest_2.jpg',
+    ],
+    imageCaptions: [
+      'Ludovika Main Building — Faculty of Military Sciences & Public Administration',
+      'Ludovika Campus — Historic Neoclassical Architecture',
     ],
     facultyLinks: [
       { name: 'Faculty of Public Administration', url: 'https://uni-nke.hu/en/faculties/faculty-of-public-administration' },
@@ -548,7 +635,13 @@ export const STATIC_DORMS: StaticDorm[] = [
     description: "One of the largest student dormitories in Budapest, Universitas accommodates over 1,200 students and offers a vibrant residential community. Located in District XI, it is close to both ELTE and BME campuses and well-connected to the city center.",
     distance: '10 min walk to BME, 15 min to ELTE',
     amenities: ['WiFi', 'Laundry', 'Kitchen', 'Study Room', 'Gym', '24h Security', 'Canteen'],
-    images: ['https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800&q=80'],
+    images: [
+      'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800&q=80',
+      'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80',
+      'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80',
+    ],
+    imageCaptions: ['Universitas Dormitory — Main Building', 'Study Room & Common Area', 'Typical Student Room'],
+    affiliatedUniversity: 'bme',
     website: null,
     avg_rating: 3.8,
     review_count: 3,
@@ -568,7 +661,12 @@ export const STATIC_DORMS: StaticDorm[] = [
     description: "Vásárhelyi Pál Dormitory is a BME-affiliated dorm located steps from the main campus. Affordable and functional, it is a popular choice for engineering and architecture students who need to be close to their faculty buildings.",
     distance: '5 min walk to BME main campus',
     amenities: ['WiFi', 'Kitchen', 'Laundry', 'Study Room', 'Bicycle Storage'],
-    images: ['https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80'],
+    images: [
+      'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80',
+      'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800&q=80',
+    ],
+    imageCaptions: ['Vásárhelyi Pál Dormitory — Exterior', 'Study Room'],
+    affiliatedUniversity: 'bme',
     website: null,
     avg_rating: 4.0,
     review_count: 3,
@@ -588,7 +686,13 @@ export const STATIC_DORMS: StaticDorm[] = [
     description: "Schönherz is one of the most well-known and lively dormitories in Budapest, affiliated with BME. Famous for its active student clubs, cultural events, and the iconic annual Gólyabál festival. It offers a vibrant community life alongside comfortable accommodation.",
     distance: '5 min walk to BME',
     amenities: ['WiFi', 'Gym', 'Restaurant', 'Common Room', 'Study Room', 'Laundry', 'Music Room', 'Table Tennis'],
-    images: ['https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80'],
+    images: [
+      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
+      'https://images.unsplash.com/photo-1574362848149-11496d93a7c7?w=800&q=80',
+      'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80',
+    ],
+    imageCaptions: ['Schönherz Dormitory — Main Building', 'Common Room & Social Spaces', 'Gym & Recreational Facilities'],
+    affiliatedUniversity: 'bme',
     website: null,
     avg_rating: 4.5,
     review_count: 3,
@@ -608,7 +712,12 @@ export const STATIC_DORMS: StaticDorm[] = [
     description: "Jedlik Ányos Dormitory is one of the most affordable student residences in Budapest. Located in the student-heavy District XI, it offers basic but comfortable accommodation with all essential amenities. Ideal for students on a tight budget.",
     distance: '10 min walk to BME and ELTE',
     amenities: ['WiFi', 'Kitchen', 'Laundry', 'Common Room'],
-    images: ['https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80'],
+    images: [
+      'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80',
+      'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80',
+    ],
+    imageCaptions: ['Jedlik Ányos Dormitory — Exterior', 'Student Room'],
+    affiliatedUniversity: 'bme',
     website: null,
     avg_rating: 3.3,
     review_count: 3,
@@ -628,7 +737,13 @@ export const STATIC_DORMS: StaticDorm[] = [
     description: "Martos Flóra Dormitory, affiliated with BME, offers comfortable accommodation for female and mixed-gender students. Known for its quiet and secure environment, it is a popular choice for students who prefer a more relaxed residential setting.",
     distance: '5 min walk to BME',
     amenities: ['WiFi', 'Study Room', 'Kitchen', 'Laundry', '24h Security', 'Common Room'],
-    images: ['https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80'],
+    images: [
+      'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80',
+      'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&q=80',
+      'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80',
+    ],
+    imageCaptions: ['Martos Flóra Dormitory — Building Exterior', 'Study Room', 'Student Room Interior'],
+    affiliatedUniversity: 'bme',
     website: null,
     avg_rating: 4.2,
     review_count: 3,
@@ -648,7 +763,13 @@ export const STATIC_DORMS: StaticDorm[] = [
     description: "ELTE Gólyavár is a modern dormitory operated by Eötvös Loránd University. It combines comfortable accommodation with excellent study facilities, catering primarily to ELTE students but open to all university students in Budapest.",
     distance: '5 min walk to ELTE campus, 15 min to city center',
     amenities: ['WiFi', 'Study Room', 'Kitchen', 'Laundry', 'Common Room', 'Library Access'],
-    images: ['https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&q=80'],
+    images: [
+      'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&q=80',
+      'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80',
+      'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800&q=80',
+    ],
+    imageCaptions: ['ELTE Gólyavár Dormitory — Main Entrance', 'Common Room & Study Area', 'Student Accommodation'],
+    affiliatedUniversity: 'elte',
     website: 'https://www.elte.hu',
     avg_rating: 4.0,
     review_count: 3,
@@ -668,7 +789,13 @@ export const STATIC_DORMS: StaticDorm[] = [
     description: "The Semmelweis University Dormitory provides accommodation primarily for medical, dental, and pharmacy students. Located near the main Semmelweis campus and several university hospitals, it is an ideal base for students who need quick access to clinical training.",
     distance: '5 min walk to Semmelweis University main campus',
     amenities: ['WiFi', 'Study Room', 'Kitchen', 'Laundry', '24h Security', 'Common Room'],
-    images: ['https://images.unsplash.com/photo-1567521464027-f127ff144326?w=800&q=80'],
+    images: [
+      'https://images.unsplash.com/photo-1567521464027-f127ff144326?w=800&q=80',
+      'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80',
+      'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&q=80',
+    ],
+    imageCaptions: ['Semmelweis University Dormitory — Exterior', 'Student Room', 'Study & Common Room'],
+    affiliatedUniversity: 'semmelweis',
     website: 'https://semmelweis.hu',
     avg_rating: 4.0,
     review_count: 3,
@@ -688,7 +815,12 @@ export const STATIC_DORMS: StaticDorm[] = [
     description: "Aquarium Dormitory is a modern student residence in the quieter Buda side of the city (District II). With excellent transport links and modern facilities including a gym and spacious common rooms, it attracts students from multiple universities.",
     distance: '20 min by tram to city center, bus connections to most universities',
     amenities: ['WiFi', 'Gym', 'Common Room', 'Study Room', 'Laundry', 'Bike Storage', 'Rooftop Terrace'],
-    images: ['https://images.unsplash.com/photo-1574362848149-11496d93a7c7?w=800&q=80'],
+    images: [
+      'https://images.unsplash.com/photo-1574362848149-11496d93a7c7?w=800&q=80',
+      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
+      'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80',
+    ],
+    imageCaptions: ['Aquarium Dormitory — Modern Exterior', 'Gym & Recreation Area', 'Rooftop Terrace'],
     website: null,
     avg_rating: 4.3,
     review_count: 3,
@@ -708,7 +840,11 @@ export const STATIC_DORMS: StaticDorm[] = [
     description: "Zeppelin is a hybrid hostel and student residence in the heart of Budapest's city center (District V). While pricier than traditional university dorms, it offers a vibrant social atmosphere, 24h reception, and unbeatable central location for exploring the city.",
     distance: 'Central location — 20 min by metro to most university campuses',
     amenities: ['WiFi', 'Common Room', 'Bar', '24h Reception', 'Luggage Storage', 'City Center Location'],
-    images: ['https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=800&q=80'],
+    images: [
+      'https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=800&q=80',
+      'https://images.unsplash.com/photo-1574362848149-11496d93a7c7?w=800&q=80',
+    ],
+    imageCaptions: ['Zeppelin Student Residence — City Center Location', 'Common Room & Bar Area'],
     website: null,
     avg_rating: 3.8,
     review_count: 3,
@@ -728,7 +864,11 @@ export const STATIC_DORMS: StaticDorm[] = [
     description: "Pannon Dormitory is located in the residential District XII of Budapest, offering a peaceful and green surroundings combined with comfortable student accommodation. It has good transport connections and is popular among students from multiple universities.",
     distance: '15 min by bus to BME, 25 min to city center',
     amenities: ['WiFi', 'Study Room', 'Kitchen', 'Laundry', 'Garden', 'Common Room'],
-    images: ['https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80'],
+    images: [
+      'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80',
+      'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&q=80',
+    ],
+    imageCaptions: ['Pannon Dormitory — Exterior in District XII', 'Garden & Common Areas'],
     website: null,
     avg_rating: 3.8,
     review_count: 3,
@@ -736,6 +876,36 @@ export const STATIC_DORMS: StaticDorm[] = [
       { id: 'dr28', name: 'Noemie L.', rating: 4, title: 'Peaceful and affordable', body: 'Pannon is great if you want a quieter area. The garden is lovely in spring and summer. Good transport links mean getting to university is no problem.', date: '2024-11-01' },
       { id: 'dr29', name: 'Stefan B.', rating: 4, title: 'Good value in a nice area', body: 'District XII is a beautiful, hilly part of Budapest. The dorm is well-priced and the rooms are comfortable. A bit further from city center but tram connections are good.', date: '2024-08-10' },
       { id: 'dr30', name: 'Leila A.', rating: 3, title: 'Decent but slightly isolated', body: 'Nice surroundings and clean facilities but feels a bit cut off from the student buzz compared to dorms in District XI. Transport can be slow during rush hour.', date: '2024-05-03' },
+    ],
+  },
+  {
+    id: 'marton-aron',
+    name: 'Márton Áron Dormitory',
+    city: 'Budapest',
+    address: 'Ménesi út 11-13, Budapest, 1118 (District XI)',
+    price_min: 110,
+    price_max: 170,
+    description: "Márton Áron Dormitory is one of Budapest's most beloved student residences, primarily affiliated with Eötvös Loránd University (ELTE). Located in the leafy District XI near the Lágymányos campus, it is named after Márton Áron, the Bishop of Transylvania. The dorm is renowned for its strong community culture, regular cultural events, and active student self-governance.",
+    distance: '5 min walk to ELTE Lágymányos campus (Faculty of Science & Informatics)',
+    amenities: ['WiFi', 'Study Room', 'Kitchen', 'Laundry', 'Common Room', 'Cultural Events', 'Sports Room', '24h Security', 'Library Access'],
+    images: [
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/M%C3%A1rton_%C3%81ron_Koll%C3%A9gium%2C_M%C3%A9nesi_%C3%BAt_11-13%2C_2018_Lágymányos.jpg/800px-M%C3%A1rton_%C3%81ron_Koll%C3%A9gium%2C_M%C3%A9nesi_%C3%BAt_11-13%2C_2018_Lágymányos.jpg',
+      'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&q=80',
+      'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80',
+    ],
+    imageCaptions: [
+      'Márton Áron Dormitory — Main Building, Ménesi út (District XI)',
+      'Common Room & Study Area',
+      'Student Room Interior',
+    ],
+    affiliatedUniversity: 'elte',
+    website: null,
+    avg_rating: 4.4,
+    review_count: 3,
+    reviews: [
+      { id: 'dr31', name: 'Katalin V.', rating: 5, title: 'The heart of ELTE student life', body: 'Márton Áron is more than a dorm — it\'s a community. The cultural events, the study rooms, and the people make it truly special. Being close to the Lágymányos campus is a huge plus.', date: '2024-10-20' },
+      { id: 'dr32', name: 'Ibrahim A.', rating: 4, title: 'Great location for ELTE students', body: 'Five minutes to the Faculty of Science and ten to the city center by tram. The rooms are comfortable and the common areas are always lively. The student self-governance is very active.', date: '2024-07-15' },
+      { id: 'dr33', name: 'Sophie L.', rating: 4, title: 'Strong community feel', body: 'Márton Áron has a special atmosphere unlike any other dorm I\'ve visited. The cultural programs organized by students are excellent. Slightly older building but well-maintained.', date: '2024-04-08' },
     ],
   },
 ]

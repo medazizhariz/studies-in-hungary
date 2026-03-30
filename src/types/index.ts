@@ -22,6 +22,8 @@ export type Dorm = {
   created_at: string
   avg_rating?: number | null
   review_count?: number | null
+  affiliatedUniversity?: string | null
+  affiliatedUniversityName?: string | null
 }
 
 export type University = {

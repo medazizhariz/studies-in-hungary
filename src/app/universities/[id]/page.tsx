@@ -4,8 +4,8 @@ import { createClient } from '@/lib/supabase/server'
 import StarRating from '@/components/StarRating'
 import ReviewCard from '@/components/ReviewCard'
 import ReviewFormToggle from '@/app/dorms/[id]/ReviewFormToggle'
+import PhotoGallery from '@/components/PhotoGallery'
 import { STATIC_UNIVERSITIES } from '@/lib/staticData'
-import { proxyImage } from '@/lib/utils'
 import type { Metadata } from 'next'
 
 type Props = { params: Promise<{ id: string }> }
@@ -56,6 +56,7 @@ export default async function UniDetailPage({ params }: Props) {
   const facultyLinks = staticUni?.facultyLinks ?? []
   const degreeLevels = staticUni?.degree_levels ?? []
   const images = staticUni?.images ?? []
+  const imageCaptions = staticUni?.imageCaptions ?? []
 
   const avgRating = reviews.length
     ? reviews.reduce((s: number, r: any) => s + r.rating, 0) / reviews.length
@@ -66,19 +67,7 @@ export default async function UniDetailPage({ params }: Props) {
       <Link href="/universities" className="text-sm text-primary-600 hover:underline mb-4 inline-block">← Back to Universities</Link>
 
       {/* Image Gallery */}
-      {images.length > 0 && (
-        <div className={`grid gap-3 mb-8 ${images.length === 1 ? 'grid-cols-1' : images.length === 2 ? 'grid-cols-2' : 'grid-cols-3'}`}>
-          {images.map((src, i) => (
-            <div key={i} className={`rounded-xl overflow-hidden bg-gray-100 ${images.length === 1 ? 'h-72' : 'h-48'}`}>
-              <img
-                src={proxyImage(src)}
-                alt={`${name} - photo ${i + 1}`}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          ))}
-        </div>
-      )}
+      <PhotoGallery images={images} captions={imageCaptions} name={name} />
 
       <div className="grid md:grid-cols-3 gap-8">
         <div className="md:col-span-2 space-y-6">

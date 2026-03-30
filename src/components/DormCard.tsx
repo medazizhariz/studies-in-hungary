@@ -26,6 +26,12 @@ export default function DormCard({ dorm }: Props) {
       <div className="p-4">
         <p className="text-xs text-gray-400 mb-1">📍 {dorm.city}</p>
         <h3 className="font-bold text-sm text-gray-900 mb-2 leading-snug">{dorm.name}</h3>
+        {dorm.affiliatedUniversityName && (
+          <p className="text-xs text-primary-600 mb-2 flex items-center gap-1">
+            <span>🎓</span>
+            <span>{dorm.affiliatedUniversityName}</span>
+          </p>
+        )}
         <div className="flex items-center gap-1.5">
           <StarRating rating={dorm.avg_rating} size={12} />
           <span className="text-xs text-gray-500">

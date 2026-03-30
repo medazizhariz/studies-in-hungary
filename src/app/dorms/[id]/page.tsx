@@ -1,11 +1,11 @@
 import { notFound } from 'next/navigation'
-import Image from 'next/image'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/server'
 import StarRating from '@/components/StarRating'
 import ReviewCard from '@/components/ReviewCard'
 import ReviewFormToggle from './ReviewFormToggle'
-import { STATIC_DORMS } from '@/lib/staticData'
+import PhotoGallery from '@/components/PhotoGallery'
+import { STATIC_DORMS, STATIC_UNIVERSITIES } from '@/lib/staticData'
 import type { Metadata } from 'next'
 
 type Props = { params: Promise<{ id: string }> }
@@ -54,21 +54,25 @@ export default async function DormDetailPage({ params }: Props) {
   const price_min = dorm?.price_min ?? staticDorm?.price_min ?? null
   const price_max = dorm?.price_max ?? staticDorm?.price_max ?? null
   const distance = staticDorm?.distance ?? null
+  const imageCaptions = staticDorm?.imageCaptions ?? []
+  const affiliatedUniversityId = staticDorm?.affiliatedUniversity ?? null
+  const affiliatedUniversity = affiliatedUniversityId
+    ? STATIC_UNIVERSITIES.find((u) => u.id === affiliatedUniversityId) ?? null
+    : null
 
   const avgRating = reviews.length
     ? reviews.reduce((s: number, r: any) => s + r.rating, 0) / reviews.length
     : null
 
   const PLACEHOLDER = 'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800&q=80'
-  const mainImg = images[0] ?? PLACEHOLDER
+  const galleryImages = images.length > 0 ? images : [PLACEHOLDER]
 
   return (
     <div className="max-w-4xl mx-auto px-4 md:px-8 py-8">
       <Link href="/dorms" className="text-sm text-primary-600 hover:underline mb-4 inline-block">← Back to Dorms</Link>
 
-      <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden mb-6 bg-gray-100">
-        <Image src={mainImg} alt={name} fill className="object-cover" priority sizes="800px" />
-      </div>
+      {/* Image Gallery */}
+      <PhotoGallery images={galleryImages} captions={imageCaptions} name={name} />
 
       <div className="grid md:grid-cols-3 gap-8">
         <div className="md:col-span-2 space-y-6">
@@ -129,6 +133,19 @@ export default async function DormDetailPage({ params }: Props) {
         <aside className="space-y-4">
           <div className="card p-5 space-y-3">
             <h3 className="font-bold text-gray-900">Quick Info</h3>
+            {affiliatedUniversity && (
+              <div>
+                <p className="text-xs text-gray-400 mb-1">Affiliated University</p>
+                <Link
+                  href={`/universities/${affiliatedUniversity.id}`}
+                  className="flex items-center gap-2 text-sm font-semibold text-primary-700 hover:text-primary-900 hover:underline"
+                >
+                  <span>🎓</span>
+                  <span>{affiliatedUniversity.name}</span>
+                  <span className="text-xs text-primary-400">↗</span>
+                </Link>
+              </div>
+            )}
             {(price_min || price_max) && (
               <div>
                 <p className="text-xs text-gray-400 mb-0.5">Monthly Price</p>
