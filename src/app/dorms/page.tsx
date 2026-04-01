@@ -2,6 +2,7 @@ export const dynamic = 'force-dynamic'
 
 import { createClient } from '@/lib/supabase/server'
 import DormCard from '@/components/DormCard'
+import Link from 'next/link'
 import { CITIES } from '@/lib/utils'
 import { STATIC_DORMS, STATIC_UNIVERSITIES } from '@/lib/staticData'
 import type { Dorm } from '@/types'
@@ -45,9 +46,14 @@ export default async function DormsPage({ searchParams }: Props) {
   return (
     <div>
       <div className="page-header">
-        <div className="max-w-6xl mx-auto">
-          <h1 className="text-3xl font-black text-gray-900">Student Dorms</h1>
-          <p className="text-gray-500 text-sm mt-1">Real reviews from international students across Hungary.</p>
+        <div className="max-w-6xl mx-auto flex items-start justify-between flex-wrap gap-3">
+          <div>
+            <h1 className="text-3xl font-black text-gray-900">Student Dorms</h1>
+            <p className="text-gray-500 text-sm mt-1">Real reviews from international students across Hungary.</p>
+          </div>
+          <Link href="/dorms/add" className="btn-primary px-4 py-2 text-sm">
+            + Add a Dorm
+          </Link>
         </div>
       </div>
 

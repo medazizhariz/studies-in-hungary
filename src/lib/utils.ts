@@ -36,7 +36,7 @@ export function initials(name: string | null | undefined) {
     .slice(0, 2)
 }
 
-export const CITIES = ['Budapest', 'Debrecen', 'Pécs', 'Miskolc', 'Győr', 'Szeged']
+export const CITIES = ['Budapest', 'Debrecen', 'Pécs', 'Miskolc', 'Győr', 'Szeged', 'Sopron']
 
 export const QA_CATEGORIES = [
   'Scholarships',

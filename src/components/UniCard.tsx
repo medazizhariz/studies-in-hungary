@@ -15,6 +15,7 @@ export default function UniCard({ university: u }: Props) {
           <img
             src={proxyImage(u.image_url)}
             alt={u.name}
+            loading="lazy"
             className="w-full h-full object-cover"
           />
         ) : (
