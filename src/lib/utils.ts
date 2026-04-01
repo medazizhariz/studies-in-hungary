@@ -2,7 +2,7 @@
 export function proxyImage(url: string): string {
   if (url.includes('upload.wikimedia.org')) {
     const clean = url.replace(/^https?:\/\//, '')
-    return `https://images.weserv.nl/?url=${clean}&w=800&output=jpg`
+    return `https://images.weserv.nl/?url=${encodeURI(clean)}&w=800&output=jpg`
   }
   return url
 }
