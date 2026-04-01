@@ -63,6 +63,19 @@ export type StaticDorm = {
   reviews: StaticReview[]
 }
 
+export type StaticQAAuthor = {
+  name: string
+  avatar: string
+}
+
+export type StaticQAReply = {
+  id: string
+  author: StaticQAAuthor
+  body: string
+  date: string
+  upvotes: number
+}
+
 export type StaticQA = {
   id: string
   title: string
@@ -70,8 +83,11 @@ export type StaticQA = {
   category: string
   views: number
   upvotes: number
+  /** Empty string means unanswered */
   answer: string
   date: string
+  author?: StaticQAAuthor
+  replies?: StaticQAReply[]
 }
 
 export type StaticGuideStep = {
@@ -1102,6 +1118,22 @@ export const STATIC_DORMS: StaticDorm[] = [
 
 // ─── Q&A ──────────────────────────────────────────────────────────────────────
 
+/** Reusable pool of mock community members used as question/answer authors */
+export const MOCK_QA_AUTHORS: StaticQAAuthor[] = [
+  { name: 'Ahmed K.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=AhmedK' },
+  { name: 'Sofia R.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=SofiaR' },
+  { name: 'Luca M.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=LucaM' },
+  { name: 'Priya S.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=PriyaS' },
+  { name: 'Omar A.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=OmarA' },
+  { name: 'Elena V.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=ElenaV' },
+  { name: 'James T.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=JamesT' },
+  { name: 'Nour H.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=NourH' },
+  { name: 'Carlos F.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=CarlosF' },
+  { name: 'Mei L.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=MeiL' },
+  { name: 'Anna B.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=AnnaB' },
+  { name: 'Tariq N.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=TariqN' },
+]
+
 export const STATIC_QA: StaticQA[] = [
   // HOUSING
   {
@@ -1113,6 +1145,11 @@ export const STATIC_QA: StaticQA[] = [
     upvotes: 48,
     answer: "University dormitories (kollégiumi szoba) in Budapest typically range from €90 to €220 per month depending on the university and room type. BME-affiliated dorms like Vásárhelyi and Jedlik are on the cheaper end (€90–€140/month), while modern or private residences like Aquarium or Zeppelin can reach €200–€350/month. State university dorms are heavily subsidized for enrolled students and are almost always the most affordable option. Apply early as spots fill up quickly, especially for international students.",
     date: '2024-09-01',
+    author: { name: 'Ahmed K.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=AhmedK' },
+    replies: [
+      { id: 'r1a', author: { name: 'Luca M.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=LucaM' }, body: 'Confirmed — I pay €120/month at Vásárhelyi and it includes utilities. Great value.', date: '2024-09-05', upvotes: 12 },
+      { id: 'r1b', author: { name: 'Sofia R.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=SofiaR' }, body: 'Apply in May for September. I almost missed the deadline — the international office email was buried in spam.', date: '2024-09-08', upvotes: 8 },
+    ],
   },
   {
     id: 'qa2',
@@ -1219,6 +1256,11 @@ export const STATIC_QA: StaticQA[] = [
     upvotes: 29,
     answer: "The most popular banks for international students in Budapest are: **OTP Bank** — Hungary's largest bank, has English-speaking staff at major branches, widely available ATMs. **K&H Bank** — Good student accounts with low/no fees, good online banking. **Erste Bank** — International bank with good English support, popular with expats. **Raiffeisen Bank** — Another international option with decent English service. Most banks require a Hungarian address (lakcímkártya) to open an account. OTP and K&H are often recommended for ease of account opening. Avoid banks with high monthly maintenance fees. Revolut and Wise are also widely used by students for low-cost international transfers.",
     date: '2024-09-25',
+    author: { name: 'Carlos F.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=CarlosF' },
+    replies: [
+      { id: 'r11a', author: { name: 'Elena V.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=ElenaV' }, body: 'OTP has a great student account with zero monthly fee if you are under 25. Highly recommend.', date: '2024-10-01', upvotes: 15 },
+      { id: 'r11b', author: { name: 'Nour H.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=NourH' }, body: 'Revolut was the easiest for me — had a virtual card in 10 minutes and started spending immediately.', date: '2024-10-03', upvotes: 22 },
+    ],
   },
   {
     id: 'qa12',
@@ -1229,6 +1271,10 @@ export const STATIC_QA: StaticQA[] = [
     upvotes: 44,
     answer: "The absolute easiest and fastest way to open an account as an international student is using Revolut. It takes 5 minutes on your phone, you get a virtual card immediately, and you can hold both EUR and HUF with excellent exchange rates. If you prefer a classic brick-and-mortar bank, the process requires visiting a branch with your passport, residence permit, and student ID. OTP Bank is Hungary's largest bank with English-speaking staff at major branches, or you can use K&H Bank.",
     date: '2024-08-30',
+    author: { name: 'James T.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=JamesT' },
+    replies: [
+      { id: 'r12a', author: { name: 'Mei L.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=MeiL' }, body: "K&H Bank has an English app now. Opened mine in 20 minutes at the branch on Rákóczi út. Bring your lakcímkártya!", date: '2024-09-04', upvotes: 10 },
+    ],
   },
 
   // SCHOLARSHIPS
@@ -1251,6 +1297,135 @@ export const STATIC_QA: StaticQA[] = [
     upvotes: 17,
     answer: "The Hungarian Diaspora Scholarship is for students of Hungarian origin living outside Hungary. Eligibility requirements: 1) You must be of Hungarian origin (Hungarian ancestry, Hungarian community membership, or Hungarian cultural ties). 2) You must be a citizen of a non-EU/EEA country (some programs accept EU citizens of Hungarian origin). 3) You must apply for admission to a Hungarian higher education institution. 4) You must have Hungarian language skills or commitment to learn Hungarian. The scholarship covers tuition fees and provides accommodation support. Applications are made through the Balassi Institute and Hungarian embassies. The program is separate from Stipendium Hungaricum and specifically targets the global Hungarian diaspora.",
     date: '2024-07-05',
+    author: { name: 'Priya S.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=PriyaS' },
+    replies: [
+      {
+        id: 'r14a',
+        author: { name: 'Tariq N.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=TariqN' },
+        body: "It's also worth mentioning that the Balassi Institute sometimes offers pre-departure language courses. Reach out to them early!",
+        date: '2024-07-12',
+        upvotes: 9,
+      },
+    ],
+  },
+
+  // ── ADDITIONAL ANSWERED QUESTIONS WITH MOCK AUTHORS ──────────────────────────
+  {
+    id: 'qa15',
+    title: 'Is public transport free for students in Budapest?',
+    body: '',
+    category: 'Daily Life',
+    views: 502,
+    upvotes: 39,
+    answer: "With a valid Diákigazolvány (student ID), students get 50% off BKK monthly passes. A monthly unlimited pass costs around 9,950 HUF for students (about €25). Children under 14 and passengers over 65 travel free. PhD students and some scholarship recipients may be eligible for a full-fare exemption — check with your university's student services.",
+    date: '2024-08-25',
+    author: { name: 'Luca M.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=LucaM' },
+    replies: [
+      {
+        id: 'r15a',
+        author: { name: 'Elena V.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=ElenaV' },
+        body: 'Stipendium Hungaricum scholars also get free BKK passes — confirm with your university scholarship coordinator.',
+        date: '2024-09-02',
+        upvotes: 14,
+      },
+      {
+        id: 'r15b',
+        author: { name: 'Carlos F.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=CarlosF' },
+        body: 'You can top up your BKK card at any metro station machine. Super easy once you have it.',
+        date: '2024-09-05',
+        upvotes: 7,
+      },
+    ],
+  },
+  {
+    id: 'qa16',
+    title: 'What health insurance do I need as an international student in Hungary?',
+    body: '',
+    category: 'Health & Insurance',
+    views: 340,
+    upvotes: 27,
+    answer: "EU/EEA students should bring their European Health Insurance Card (EHIC) which gives access to Hungarian public healthcare on the same terms as Hungarian citizens. Non-EU students need private health insurance covering their full stay — this is also a requirement for the visa application. Many students use travel insurance policies (e.g., Allianz, AXA) that offer student plans from €30–€60/month. Stipendium Hungaricum scholars receive a dedicated health insurance package as part of their scholarship.",
+    date: '2024-09-14',
+    author: { name: 'Nour H.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=NourH' },
+    replies: [
+      {
+        id: 'r16a',
+        author: { name: 'Anna B.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=AnnaB' },
+        body: 'I used the Hungarian Student card at Semmelweis clinics and it worked perfectly. Just register with a GP first.',
+        date: '2024-09-20',
+        upvotes: 11,
+      },
+    ],
+  },
+  {
+    id: 'qa17',
+    title: 'Can I use Revolut or Wise for everyday spending in Hungary?',
+    body: '',
+    category: 'Banking & Finance',
+    views: 461,
+    upvotes: 35,
+    answer: "Absolutely — Revolut and Wise are extremely popular among international students in Budapest. Both offer free (or low-fee) accounts in minutes with virtual and physical cards. You can hold HUF alongside EUR/USD, and exchange rates are near mid-market. Most Budapest shops, restaurants, and transport accept contactless card payments. For cash (some markets/smaller cafés), Revolut lets you withdraw HUF from ATMs cheaply. Wise is particularly great for receiving scholarship payments in EUR and converting to HUF.",
+    date: '2024-10-03',
+    author: { name: 'James T.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=JamesT' },
+    replies: [
+      {
+        id: 'r17a',
+        author: { name: 'Mei L.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=MeiL' },
+        body: "Revolut's standard plan gives you 5 free ATM withdrawals/month up to €200. After that there's a small fee. Still by far the cheapest option.",
+        date: '2024-10-10',
+        upvotes: 18,
+      },
+    ],
+  },
+
+  // ── UNANSWERED QUESTIONS (for the filter feature) ─────────────────────────────
+  {
+    id: 'qa18',
+    title: 'Does BME have English-taught Master programs in computer science?',
+    body: 'I am looking specifically for MSc programs with a strong software engineering focus. Any recent experiences would be appreciated.',
+    category: 'Academic',
+    views: 87,
+    upvotes: 6,
+    answer: '',
+    date: '2024-11-15',
+    author: { name: 'Omar A.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=OmarA' },
+    replies: [],
+  },
+  {
+    id: 'qa19',
+    title: 'How long does it take to register for a residence permit after arrival?',
+    body: 'I arrive in early September and want to know the realistic timeline at the BÁH office.',
+    category: 'Visa & Immigration',
+    views: 63,
+    upvotes: 4,
+    answer: '',
+    date: '2024-11-18',
+    author: { name: 'Ahmed K.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=AhmedK' },
+    replies: [],
+  },
+  {
+    id: 'qa20',
+    title: 'Are there any Hungarian language crash courses for international students?',
+    body: 'Looking for free or affordable options before the semester starts.',
+    category: 'Language & Culture',
+    views: 45,
+    upvotes: 3,
+    answer: '',
+    date: '2024-11-20',
+    author: { name: 'Sofia R.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=SofiaR' },
+    replies: [],
+  },
+  {
+    id: 'qa21',
+    title: 'Is it possible to get a student discount card for museums in Budapest?',
+    body: '',
+    category: 'Daily Life',
+    views: 38,
+    upvotes: 2,
+    answer: '',
+    date: '2024-11-22',
+    author: { name: 'Tariq N.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=TariqN' },
+    replies: [],
   },
 ]
 

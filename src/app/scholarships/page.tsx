@@ -1,3 +1,5 @@
+export const revalidate = 3600 // revalidate every hour
+
 import { createClient } from '@/lib/supabase/server'
 import { formatDeadline } from '@/lib/utils'
 import { STATIC_SCHOLARSHIPS } from '@/lib/staticData'
@@ -87,7 +89,7 @@ export default async function ScholarshipsPage() {
             <div className="space-y-3">
               {others.map((s) => (
                 <div key={s.id} className="card p-5">
-                  <div className="flex gap-4 items-start">
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 sm:items-start">
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1 flex-wrap">
                         <h3 className="font-bold text-sm text-gray-900">{s.name}</h3>
@@ -101,17 +103,20 @@ export default async function ScholarshipsPage() {
                       {'coverage' in s && s.coverage && (
                         <p className="text-xs text-green-700 font-medium">✓ {s.coverage}</p>
                       )}
+                      {'eligibility' in s && s.eligibility && (
+                        <p className="text-xs text-gray-400 mt-1">👤 {s.eligibility}</p>
+                      )}
                     </div>
-                    <div className="text-right shrink-0">
+                    <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-start gap-2 shrink-0">
                       {s.deadline && (
-                        <>
+                        <div className="sm:text-right">
                           <p className="text-xs text-gray-400">Deadline</p>
                           <p className="text-sm font-semibold text-gray-700">{s.deadline}</p>
-                        </>
+                        </div>
                       )}
                       {s.link && (
                         <a href={s.link} target="_blank" rel="noopener noreferrer"
-                          className="text-xs text-primary-600 font-semibold hover:underline block mt-1">
+                          className="text-xs text-primary-600 font-semibold hover:underline whitespace-nowrap">
                           Apply →
                         </a>
                       )}
