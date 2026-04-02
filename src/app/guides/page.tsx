@@ -160,16 +160,15 @@ export default function GuidesPage() {
   const [userId, setUserId] = useState<string | null>(null)
   const supabase = createClient()
 
-  // Load progress on mount
+  // Load progress on mount — localStorage is always the base, Supabase overrides when available
   useEffect(() => {
     const load = async () => {
-      const { data: { user } } = await supabase.auth.getUser()
+      // Always start from localStorage so guests and fallback cases work instantly
+      const local = loadLocalProgress()
+      setProgress(local)
 
-      if (!user) {
-        // Not logged in — use localStorage
-        setProgress(loadLocalProgress())
-        return
-      }
+      const { data: { user } } = await supabase.auth.getUser()
+      if (!user) return
 
       setUserId(user.id)
 
@@ -178,13 +177,14 @@ export default function GuidesPage() {
         .select('guide_id, step_id')
         .eq('user_id', user.id)
 
-      if (!error && data) {
+      if (!error && data && data.length > 0) {
         const prog: Progress = {}
         for (const row of data) {
           if (!prog[row.guide_id]) prog[row.guide_id] = {}
           prog[row.guide_id][row.step_id] = true
         }
         setProgress(prog)
+        saveLocalProgress(prog) // keep localStorage in sync
       }
     }
     load()
@@ -201,12 +201,12 @@ export default function GuidesPage() {
     }
     setProgress(updated)
 
-    if (!userId) {
-      // Save to localStorage for guests
-      saveLocalProgress(updated)
-      return
-    }
+    // Always save to localStorage (works for guests + fallback for logged-in users)
+    saveLocalProgress(updated)
 
+    if (!userId) return
+
+    // Also save to Supabase for cross-device sync
     if (isChecked) {
       await supabase
         .from('guide_progress')
