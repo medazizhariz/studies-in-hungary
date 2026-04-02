@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { STATIC_GUIDES } from '@/lib/staticData'
+import { createClient } from '@/lib/supabase/client'
 
 const CATEGORIES = ['All', ...Array.from(new Set(STATIC_GUIDES.map((g) => g.category)))]
 
@@ -28,19 +29,18 @@ function GuideCard({
   guide,
   isOpen,
   onToggle,
+  checked,
+  onToggleStep,
 }: {
   guide: typeof STATIC_GUIDES[0]
   isOpen: boolean
   onToggle: () => void
+  checked: Record<string, boolean>
+  onToggleStep: (stepId: string) => void
 }) {
-  const [checked, setChecked] = useState<Record<string, boolean>>({})
-
   const completed = guide.steps.filter((s) => checked[s.id]).length
   const total = guide.steps.length
   const pct = Math.round((completed / total) * 100)
-
-  const toggle = (id: string) =>
-    setChecked((prev) => ({ ...prev, [id]: !prev[id] }))
 
   return (
     <div className="card overflow-hidden h-full">
@@ -104,7 +104,7 @@ function GuideCard({
                   <input
                     type="checkbox"
                     checked={!!checked[step.id]}
-                    onChange={() => toggle(step.id)}
+                    onChange={() => onToggleStep(step.id)}
                     className="sr-only"
                   />
                 </div>
@@ -134,9 +134,92 @@ function GuideCard({
   )
 }
 
+// progress shape: { [guideId]: { [stepId]: true } }
+type Progress = Record<string, Record<string, boolean>>
+
+const LS_KEY = 'guide_progress'
+
+function loadLocalProgress(): Progress {
+  try {
+    return JSON.parse(localStorage.getItem(LS_KEY) ?? '{}')
+  } catch {
+    return {}
+  }
+}
+
+function saveLocalProgress(progress: Progress) {
+  try {
+    localStorage.setItem(LS_KEY, JSON.stringify(progress))
+  } catch {}
+}
+
 export default function GuidesPage() {
   const [activeCategory, setActiveCategory] = useState('All')
   const [openGuideId, setOpenGuideId] = useState<string | null>(null)
+  const [progress, setProgress] = useState<Progress>({})
+  const [userId, setUserId] = useState<string | null>(null)
+  const supabase = createClient()
+
+  // Load progress on mount
+  useEffect(() => {
+    const load = async () => {
+      const { data: { user } } = await supabase.auth.getUser()
+
+      if (!user) {
+        // Not logged in — use localStorage
+        setProgress(loadLocalProgress())
+        return
+      }
+
+      setUserId(user.id)
+
+      const { data, error } = await supabase
+        .from('guide_progress')
+        .select('guide_id, step_id')
+        .eq('user_id', user.id)
+
+      if (!error && data) {
+        const prog: Progress = {}
+        for (const row of data) {
+          if (!prog[row.guide_id]) prog[row.guide_id] = {}
+          prog[row.guide_id][row.step_id] = true
+        }
+        setProgress(prog)
+      }
+    }
+    load()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const toggleStep = useCallback(async (guideId: string, stepId: string) => {
+    const isChecked = progress[guideId]?.[stepId] ?? false
+
+    // Optimistic update
+    const updated: Progress = {
+      ...progress,
+      [guideId]: { ...(progress[guideId] ?? {}), [stepId]: !isChecked },
+    }
+    setProgress(updated)
+
+    if (!userId) {
+      // Save to localStorage for guests
+      saveLocalProgress(updated)
+      return
+    }
+
+    if (isChecked) {
+      await supabase
+        .from('guide_progress')
+        .delete()
+        .eq('user_id', userId)
+        .eq('guide_id', guideId)
+        .eq('step_id', stepId)
+    } else {
+      await supabase
+        .from('guide_progress')
+        .upsert({ user_id: userId, guide_id: guideId, step_id: stepId })
+    }
+  }, [progress, userId, supabase])
 
   const filtered = activeCategory === 'All'
     ? STATIC_GUIDES
@@ -182,6 +265,8 @@ export default function GuidesPage() {
                 guide={g}
                 isOpen={openGuideId === g.id}
                 onToggle={() => toggleGuide(g.id)}
+                checked={progress[g.id] ?? {}}
+                onToggleStep={(stepId) => toggleStep(g.id, stepId)}
               />
             </div>
           ))}
