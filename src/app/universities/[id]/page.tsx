@@ -32,12 +32,12 @@ export default async function UniDetailPage({ params }: Props) {
   const staticUni = !uni ? STATIC_UNIVERSITIES.find((u) => u.id === id) : null
   if (!uni && !staticUni) notFound()
 
-  const { data: dbReviews } = uni ? await supabase
+  const { data: dbReviews } = await supabase
     .from('reviews')
     .select('*, profiles(username, full_name, avatar_url)')
     .eq('entity_type', 'university')
     .eq('entity_id', id)
-    .order('created_at', { ascending: false }) : { data: [] }
+    .order('created_at', { ascending: false })
 
   const reviews = dbReviews?.length
     ? dbReviews

@@ -21,6 +21,11 @@ export async function createClient() {
           }
         },
       },
+      global: {
+        // Prevent Next.js from caching Supabase responses so fresh data
+        // is always returned on every request
+        fetch: (url, options = {}) => fetch(url, { ...options, cache: 'no-store' }),
+      },
     }
   )
 }

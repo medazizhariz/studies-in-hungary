@@ -31,12 +31,12 @@ export default async function DormDetailPage({ params }: Props) {
   const staticDorm = !dorm ? STATIC_DORMS.find((d) => d.id === id) : null
   if (!dorm && !staticDorm) notFound()
 
-  const { data: dbReviews } = dorm ? await supabase
+  const { data: dbReviews } = await supabase
     .from('reviews')
     .select('*, profiles(username, full_name, avatar_url)')
     .eq('entity_type', 'dorm')
     .eq('entity_id', id)
-    .order('created_at', { ascending: false }) : { data: [] }
+    .order('created_at', { ascending: false })
 
   const reviews = dbReviews?.length
     ? dbReviews
