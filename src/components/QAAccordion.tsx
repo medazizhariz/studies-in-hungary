@@ -1,9 +1,10 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ReportButton from './ReportButton'
 import type { StaticQA } from '@/lib/staticData'
 import { MOCK_QA_AUTHORS } from '@/lib/staticData'
+import { createClient } from '@/lib/supabase/client'
 
 const CAT_COLORS: Record<string, string> = {
   Scholarships: 'bg-amber-100 text-amber-800',
@@ -70,6 +71,19 @@ export default function QAAccordion({ questions }: Props) {
   const [replyText, setReplyText] = useState('')
   const [localReplies, setLocalReplies] = useState<Record<string, Array<{ id: string; author: { name: string; avatar: string }; body: string; date: string; upvotes: number }>>>({})
   const [filter, setFilter] = useState<FilterMode>('all')
+  const [currentUserName, setCurrentUserName] = useState<string | null>(null)
+  const [currentUserAvatar, setCurrentUserAvatar] = useState<string>('')
+
+  useEffect(() => {
+    const supabase = createClient()
+    supabase.auth.getUser().then(({ data }) => {
+      if (data.user) {
+        const name = data.user.user_metadata?.full_name || data.user.email?.split('@')[0] || 'Anonymous'
+        setCurrentUserName(name)
+        setCurrentUserAvatar(`https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(name)}`)
+      }
+    })
+  }, [])
 
   const vote = (id: string, dir: 'up' | 'down') => {
     setVotes((prev) => {
@@ -88,10 +102,11 @@ export default function QAAccordion({ questions }: Props) {
 
   const submitReply = (questionId: string) => {
     if (!replyText.trim()) return
-    const author = MOCK_QA_AUTHORS[Math.floor(Math.random() * MOCK_QA_AUTHORS.length)]
+    const name = currentUserName ?? MOCK_QA_AUTHORS[Math.floor(Math.random() * MOCK_QA_AUTHORS.length)].name
+    const avatar = currentUserAvatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(name)}`
     const newReply = {
       id: `local-${Date.now()}`,
-      author,
+      author: { name, avatar },
       body: replyText.trim(),
       date: new Date().toISOString().slice(0, 10),
       upvotes: 0,
@@ -242,7 +257,8 @@ export default function QAAccordion({ questions }: Props) {
                           <div className="flex items-center gap-2 mb-1">
                             <span className="text-xs font-semibold text-gray-700 dark:text-gray-300">{r.author.name}</span>
                             <span className="text-xs text-gray-400">{r.date}</span>
-                            <span className="ml-auto text-xs text-gray-400">▲ {r.upvotes}</span>
+                            <span className="text-xs text-gray-400">▲ {r.upvotes}</span>
+                            <span className="ml-auto"><ReportButton /></span>
                           </div>
                           <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">{r.body}</p>
                         </div>

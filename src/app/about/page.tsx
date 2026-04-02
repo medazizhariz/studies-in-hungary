@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 
 export const metadata: Metadata = { title: 'About Us' }
 
@@ -56,12 +57,12 @@ const SOCIAL_LINKS = [
 ]
 
 const FEATURES = [
-  { icon: '🏛️', title: 'University Reviews', desc: 'Real student reviews for 30+ Hungarian universities to help you choose the right institution.' },
-  { icon: '🏠', title: 'Dorm Listings', desc: 'Honest reviews of student dormitories across Budapest and other major cities.' },
-  { icon: '💬', title: 'Community Q&A', desc: 'Ask anything about studying in Hungary and get answers from fellow students.' },
-  { icon: '📚', title: 'Student Guides', desc: 'Step-by-step guides for visas, banking, student IDs, and daily life in Hungary.' },
-  { icon: '🏆', title: 'Scholarships', desc: 'Curated list of scholarships available for international students in Hungary.' },
-  { icon: '🌍', title: 'Global Community', desc: 'Students from 80+ countries sharing real experiences and practical tips.' },
+  { href: '/universities', icon: '🏛️', title: 'University Reviews', desc: 'Real student reviews for Hungarian universities to help you choose the right institution.' },
+  { href: '/dorms', icon: '🏠', title: 'Dorm Listings', desc: 'Honest reviews of student dormitories across Budapest and other major cities.' },
+  { href: '/qa', icon: '💬', title: 'Community Q&A', desc: 'Ask anything about studying in Hungary and get answers from fellow students.' },
+  { href: '/guides', icon: '📚', title: 'Student Guides', desc: 'Step-by-step guides for visas, banking, student IDs, and daily life in Hungary.' },
+  { href: '/scholarships', icon: '🏆', title: 'Scholarships', desc: 'Curated list of scholarships available for international students in Hungary.' },
+  { href: '/contact', icon: '🌍', title: 'Global Community', desc: 'Students from many countries sharing real experiences and practical tips.' },
 ]
 
 export default function AboutPage() {
@@ -75,11 +76,6 @@ export default function AboutPage() {
           <p className="text-primary-100 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
             The community platform built by and for international students navigating life, studies, and scholarships in Hungary.
           </p>
-          <div className="mt-8 flex items-center justify-center gap-6 text-primary-100 text-sm">
-            <span>🌍 80+ countries</span>
-            <span>🏛️ 30+ universities</span>
-            <span>💬 100+ Q&A entries</span>
-          </div>
         </div>
       </div>
 
@@ -106,11 +102,11 @@ export default function AboutPage() {
           <h2 className="text-2xl font-black text-gray-900 dark:text-gray-100 mb-4">What We Offer</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {FEATURES.map((f) => (
-              <div key={f.title} className="card p-5">
+              <Link key={f.title} href={f.href} className="card p-5 hover:-translate-y-1 transition-transform block">
                 <div className="text-3xl mb-3">{f.icon}</div>
                 <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-1">{f.title}</h3>
                 <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{f.desc}</p>
-              </div>
+              </Link>
             ))}
           </div>
         </section>

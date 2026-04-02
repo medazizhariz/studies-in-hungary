@@ -19,6 +19,7 @@ export type Dorm = {
   amenities: string[] | null
   images: string[] | null
   website: string | null
+  university_id?: string | null
   created_at: string
   avg_rating?: number | null
   review_count?: number | null

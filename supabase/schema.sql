@@ -46,27 +46,7 @@ create trigger on_auth_user_created
   for each row execute procedure public.handle_new_user();
 
 -- =============================================
--- DORMS
--- =============================================
-create table public.dorms (
-  id          uuid primary key default gen_random_uuid(),
-  name        text not null,
-  city        text not null,
-  address     text,
-  price_min   int,
-  price_max   int,
-  description text,
-  amenities   text[],
-  images      text[],
-  website     text,
-  created_at  timestamptz default now()
-);
-
-alter table public.dorms enable row level security;
-create policy "Dorms viewable by everyone" on public.dorms for select using (true);
-
--- =============================================
--- UNIVERSITIES
+-- UNIVERSITIES (defined before dorms for FK)
 -- =============================================
 create table public.universities (
   id          uuid primary key default gen_random_uuid(),
@@ -84,6 +64,27 @@ alter table public.universities enable row level security;
 create policy "Universities viewable by everyone" on public.universities for select using (true);
 
 -- =============================================
+-- DORMS
+-- =============================================
+create table public.dorms (
+  id            uuid primary key default gen_random_uuid(),
+  name          text not null,
+  city          text not null,
+  address       text,
+  price_min     int,
+  price_max     int,
+  description   text,
+  amenities     text[],
+  images        text[],
+  website       text,
+  university_id uuid references public.universities(id) on delete set null,
+  created_at    timestamptz default now()
+);
+
+alter table public.dorms enable row level security;
+create policy "Dorms viewable by everyone" on public.dorms for select using (true);
+
+-- =============================================
 -- REVIEWS (polymorphic: dorm or university)
 -- =============================================
 create table public.reviews (
@@ -94,6 +95,7 @@ create table public.reviews (
   rating      int check (rating between 1 and 5) not null,
   title       text,
   body        text,
+  status      text check (status in ('pending', 'approved')) default 'approved',
   created_at  timestamptz default now()
 );
 

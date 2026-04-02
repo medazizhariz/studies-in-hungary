@@ -10,23 +10,32 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = { title: 'Student Dorms' }
 
-type Props = { searchParams: Promise<{ city?: string; q?: string }> }
+type Props = { searchParams: Promise<{ city?: string; q?: string; uni?: string }> }
 
 export default async function DormsPage({ searchParams }: Props) {
-  const { city, q } = await searchParams
+  const { city, q, uni } = await searchParams
   const supabase = await createClient()
-  let query = supabase.from('dorms').select('*, reviews(rating)').order('created_at', { ascending: false })
+
+  // Fetch universities for the filter dropdown
+  const { data: dbUniversities } = await supabase
+    .from('universities')
+    .select('id, name, city')
+    .order('name')
+
+  let query = supabase.from('dorms').select('*, reviews(rating), universities(name)').order('created_at', { ascending: false })
 
   if (city) query = query.eq('city', city)
   if (q) query = query.ilike('name', `%${q}%`)
+  if (uni) query = query.eq('university_id', uni)
 
   const { data } = await query
 
   let dorms: Dorm[] = data?.length
-    ? (data ?? []).map(({ reviews, ...d }: any) => ({
+    ? (data ?? []).map(({ reviews, universities: uniData, ...d }: any) => ({
         ...d,
         avg_rating: reviews.length ? reviews.reduce((s: number, r: any) => s + r.rating, 0) / reviews.length : null,
         review_count: reviews.length,
+        affiliatedUniversityName: uniData?.name ?? null,
       }))
     : STATIC_DORMS.map((d) => ({
         id: d.id, name: d.name, city: d.city, address: d.address,
@@ -42,6 +51,20 @@ export default async function DormsPage({ searchParams }: Props) {
   // Apply client-side filters for static data
   if (city) dorms = dorms.filter((d) => d.city === city)
   if (q) dorms = dorms.filter((d) => d.name.toLowerCase().includes(q.toLowerCase()))
+  if (uni && !data?.length) {
+    const uniName = STATIC_UNIVERSITIES.find((u) => u.id === uni)?.name
+    if (uniName) dorms = dorms.filter((d) => d.affiliatedUniversityName === uniName || d.affiliatedUniversity === uni)
+  }
+
+  // Build university options: use DB if available, otherwise static
+  const universityOptions = dbUniversities?.length
+    ? dbUniversities
+    : STATIC_UNIVERSITIES.map((u) => ({ id: u.id, name: u.name, city: u.city }))
+
+  // Filter university options by selected city
+  const filteredUniOptions = city
+    ? universityOptions.filter((u) => u.city === city)
+    : universityOptions
 
   return (
     <div>
@@ -67,8 +90,14 @@ export default async function DormsPage({ searchParams }: Props) {
             <option value="">All cities</option>
             {CITIES.map((c) => <option key={c} value={c}>{c}</option>)}
           </select>
+          <select name="uni" defaultValue={uni ?? ''} className="input w-56">
+            <option value="">All universities</option>
+            {filteredUniOptions.map((u) => (
+              <option key={u.id} value={u.id}>{u.name}</option>
+            ))}
+          </select>
           <button type="submit" className="btn-primary px-5">Search</button>
-          {(city || q) && (
+          {(city || q || uni) && (
             <a href="/dorms" className="btn-secondary">Clear</a>
           )}
         </form>

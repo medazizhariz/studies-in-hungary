@@ -50,7 +50,6 @@ export default async function HomePage() {
     { icon: '🏠', value: '50+', label: 'Dorms Listed' },
     { icon: '🎓', value: '30+', label: 'Universities' },
     { icon: '👤', value: '2K+', label: 'Students' },
-    { icon: '💬', value: '500+', label: 'Q&A Answers' },
   ]
 
   const features = [
@@ -93,9 +92,9 @@ export default async function HomePage() {
 
       {/* Stats */}
       <div className="max-w-6xl mx-auto px-4 md:px-8 -mt-px">
-        <div className="grid grid-cols-2 md:grid-cols-4 bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+        <div className="grid grid-cols-3 bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
           {stats.map((s, i) => (
-            <div key={i} className={`px-6 py-5 flex items-center gap-4 ${i < 3 ? 'border-b md:border-b-0 md:border-r border-gray-100' : ''}`}>
+            <div key={i} className={`px-6 py-5 flex items-center gap-4 ${i < 2 ? 'border-r border-gray-100' : ''}`}>
               <div className="p-2 bg-primary-50 rounded-xl text-xl">{s.icon}</div>
               <div>
                 <div className="text-2xl font-black text-gray-900">{s.value}</div>
@@ -114,26 +113,13 @@ export default async function HomePage() {
               🇭🇺 About Us
             </span>
             <h2 className="text-2xl md:text-3xl font-black text-gray-900 mb-4">About Studies in Hungary</h2>
-            <p className="text-gray-600 leading-relaxed text-base mb-8">
+            <p className="text-gray-600 leading-relaxed text-base">
               Studies in Hungary is a community-driven platform built by students, for students. We solve the critical
               information gap that international students face when choosing where to study and live in Hungary. Our
               platform provides authentic peer reviews, step-by-step guidance, and a supportive community to help you
               navigate every step of your Hungarian education journey — from choosing a university to opening your
               first bank account.
             </p>
-            <div className="grid grid-cols-3 gap-6">
-              {[
-                { value: '14+', label: 'Universities Listed', icon: '🎓' },
-                { value: '50+', label: 'Dorms Reviewed', icon: '🏠' },
-                { value: '1,000+', label: 'Questions Answered', icon: '💬' },
-              ].map((s) => (
-                <div key={s.label} className="text-center">
-                  <div className="text-2xl mb-1">{s.icon}</div>
-                  <div className="text-2xl font-black text-primary-700">{s.value}</div>
-                  <div className="text-xs text-gray-500 font-medium">{s.label}</div>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>

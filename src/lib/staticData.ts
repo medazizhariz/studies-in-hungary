@@ -1144,11 +1144,11 @@ export const STATIC_QA: StaticQA[] = [
     views: 723,
     upvotes: 48,
     answer: "University dormitories (kollégiumi szoba) in Budapest typically range from €90 to €220 per month depending on the university and room type. BME-affiliated dorms like Vásárhelyi and Jedlik are on the cheaper end (€90–€140/month), while modern or private residences like Aquarium or Zeppelin can reach €200–€350/month. State university dorms are heavily subsidized for enrolled students and are almost always the most affordable option. Apply early as spots fill up quickly, especially for international students.",
-    date: '2024-09-01',
+    date: '2026-01-08',
     author: { name: 'Ahmed K.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=AhmedK' },
     replies: [
-      { id: 'r1a', author: { name: 'Luca M.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=LucaM' }, body: 'Confirmed — I pay €120/month at Vásárhelyi and it includes utilities. Great value.', date: '2024-09-05', upvotes: 12 },
-      { id: 'r1b', author: { name: 'Sofia R.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=SofiaR' }, body: 'Apply in May for September. I almost missed the deadline — the international office email was buried in spam.', date: '2024-09-08', upvotes: 8 },
+      { id: 'r1a', author: { name: 'Luca M.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=LucaM' }, body: 'Confirmed — I pay €120/month at Vásárhelyi and it includes utilities. Great value.', date: '2026-01-13', upvotes: 12 },
+      { id: 'r1b', author: { name: 'Sofia R.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=SofiaR' }, body: 'Apply in May for September. I almost missed the deadline — the international office email was buried in spam.', date: '2026-01-16', upvotes: 8 },
     ],
   },
   {
@@ -1159,7 +1159,7 @@ export const STATIC_QA: StaticQA[] = [
     views: 456,
     upvotes: 31,
     answer: "Yes, renting privately in Budapest is generally safe for foreign students, but use reputable platforms like Albérlet.hu, Ingatlan.com, or Facebook groups like 'Flat/Room for Rent Budapest'. Always sign a proper rental contract (bérleti szerződés) and have it notarized or at least witnessed. Never pay more than 1–2 months deposit without a signed contract. Avoid wire-transferring money to people you haven't met. Scams exist but are rare on the main platforms. Average private rent for a room in a shared flat is €250–€450/month in central Budapest.",
-    date: '2024-08-20',
+    date: '2026-01-22',
   },
   {
     id: 'qa3',
@@ -1169,7 +1169,7 @@ export const STATIC_QA: StaticQA[] = [
     views: 312,
     upvotes: 22,
     answer: "You should apply as early as possible — ideally as soon as you receive your university acceptance letter. Most Hungarian universities open dorm applications in May–June for the September semester. Deadlines are often in June or July. International students are generally given priority in many dorm allocation systems, but spaces are still limited. Contact your university's international office or student services immediately after admission to ask about dormitory applications. Waiting until August is usually too late.",
-    date: '2024-07-15',
+    date: '2026-01-28',
   },
 
   // VISA
@@ -1181,7 +1181,7 @@ export const STATIC_QA: StaticQA[] = [
     views: 687,
     upvotes: 55,
     answer: "Non-EU students need a Type D national visa to study in Hungary for more than 90 days. Here's the process: 1) Get your university acceptance letter. 2) Gather documents: valid passport, acceptance letter, proof of accommodation, proof of financial means (bank statements showing at least €500/month), health insurance, and passport photos. 3) Book an appointment at your nearest Hungarian embassy or consulate. 4) Submit your application at least 6–8 weeks before your intended arrival. 5) Pay the visa fee (approx. €60–€100). Once you arrive in Hungary, you must apply for a residence permit within 30 days at the local immigration office.",
-    date: '2024-09-10',
+    date: '2026-02-05',
   },
   {
     id: 'qa5',
@@ -1191,7 +1191,7 @@ export const STATIC_QA: StaticQA[] = [
     views: 289,
     upvotes: 19,
     answer: "Yes, you can extend your residence permit as long as you remain an active student enrolled at a Hungarian university. You must apply for extension at the National Directorate-General for Aliens Policing (Bevándorlási és Menekültügyi Hivatal — BÁH) at least 30 days before your current permit expires. You'll need: valid passport, proof of continuing enrollment (active student status certificate from your university), proof of accommodation, proof of financial means, and health insurance. Extensions are typically granted for the duration of your studies. Always keep your contact details updated with the immigration office.",
-    date: '2024-07-28',
+    date: '2026-02-12',
   },
   {
     id: 'qa6',
@@ -1201,7 +1201,7 @@ export const STATIC_QA: StaticQA[] = [
     views: 445,
     upvotes: 38,
     answer: "No, EU/EEA citizens do not need a visa or residence permit to study in Hungary. As an EU citizen, you have the right of free movement within the EU. However, if you plan to stay for more than 90 days (which you will for a full degree), you should register with the local authorities within 90 days of arrival. You'll receive a registration certificate (EU regisztrációs igazolás) which confirms your right of residence. Bring your national ID card or passport. This process is free and takes about 30 minutes at your local Government Office (Kormányablak).",
-    date: '2024-08-05',
+    date: '2026-02-19',
   },
 
   // STUDENT LIFE
@@ -1213,7 +1213,7 @@ export const STATIC_QA: StaticQA[] = [
     views: 521,
     upvotes: 41,
     answer: "EU/EEA students can work without any restrictions in Hungary. Non-EU students on a student residence permit can work up to 24 hours per week during the academic year and full-time during official university holidays. You'll need a Hungarian tax number (adóazonosító jel) from the tax authority (NAV) before starting work. Popular student jobs include teaching English, hospitality, retail, and internships. The average pay for student jobs is between 2000 HUF to 3500 HUF per hour. The minimum wage in Hungary is around 266,800 HUF/month (~€680). Many universities also offer paid research assistant positions for graduate students.",
-    date: '2024-09-18',
+    date: '2026-02-26',
   },
   {
     id: 'qa8',
@@ -1223,7 +1223,7 @@ export const STATIC_QA: StaticQA[] = [
     views: 634,
     upvotes: 52,
     answer: "Not at all if you're enrolled in an English-language program. Almost all major universities in Budapest (Semmelweis, CEU, BME, ELTE, Corvinus, etc.) offer programs fully taught in English. For daily life, Hungarian is helpful but not essential — many locals in Budapest, especially younger generations and service industry workers, speak English. However, learning a few basic Hungarian phrases is appreciated and helps with administrative tasks. Some government offices may require a Hungarian speaker for complex immigration matters, so your university's international office can help as an intermediary.",
-    date: '2024-08-12',
+    date: '2026-03-04',
   },
   {
     id: 'qa9',
@@ -1233,7 +1233,7 @@ export const STATIC_QA: StaticQA[] = [
     views: 178,
     upvotes: 14,
     answer: "The Diákigazolvány (Student ID) gives you significant discounts on public transport (50% off), museums, cinemas, and more. To get one: 1) Register at your university and get your student status confirmed. 2) Apply through the Neptun academic system (most Hungarian universities use this). 3) Submit your application online with a passport photo. 4) Pay the fee of 800 HUF (approx. €2). 5) Wait 2–3 weeks for production. 6) Pick up your card at your university's student services office. Note: The card is valid only for the duration of your active student status and must be renewed each semester.",
-    date: '2024-06-30',
+    date: '2026-03-10',
   },
   {
     id: 'qa10',
@@ -1243,7 +1243,7 @@ export const STATIC_QA: StaticQA[] = [
     views: 801,
     upvotes: 67,
     answer: "Budapest is one of the most affordable capital cities in the EU for students. Typical monthly budget: Accommodation (dorm): €100–€200 | Private room: €300–€400. Food: €250–€350 if cooking at home; eating out regularly costs €300–€450. Transport: A monthly student pass (BKK) is about €5 with a Diákigazolvány. Entertainment/social: €50–€150. Total: approximately €600–€900/month depending on lifestyle. The Stipendium Hungaricum and other scholarships often cover tuition and provide a monthly stipend of around 40,000–130,000 HUF (~€100–€220) to help with living costs.",
-    date: '2024-10-01',
+    date: '2026-03-17',
   },
 
   // BANKING
@@ -1255,11 +1255,11 @@ export const STATIC_QA: StaticQA[] = [
     views: 398,
     upvotes: 29,
     answer: "The most popular banks for international students in Budapest are: **OTP Bank** — Hungary's largest bank, has English-speaking staff at major branches, widely available ATMs. **K&H Bank** — Good student accounts with low/no fees, good online banking. **Erste Bank** — International bank with good English support, popular with expats. **Raiffeisen Bank** — Another international option with decent English service. Most banks require a Hungarian address (lakcímkártya) to open an account. OTP and K&H are often recommended for ease of account opening. Avoid banks with high monthly maintenance fees. Revolut and Wise are also widely used by students for low-cost international transfers.",
-    date: '2024-09-25',
+    date: '2026-03-14',
     author: { name: 'Carlos F.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=CarlosF' },
     replies: [
-      { id: 'r11a', author: { name: 'Elena V.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=ElenaV' }, body: 'OTP has a great student account with zero monthly fee if you are under 25. Highly recommend.', date: '2024-10-01', upvotes: 15 },
-      { id: 'r11b', author: { name: 'Nour H.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=NourH' }, body: 'Revolut was the easiest for me — had a virtual card in 10 minutes and started spending immediately.', date: '2024-10-03', upvotes: 22 },
+      { id: 'r11a', author: { name: 'Elena V.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=ElenaV' }, body: 'OTP has a great student account with zero monthly fee if you are under 25. Highly recommend.', date: '2026-03-17', upvotes: 15 },
+      { id: 'r11b', author: { name: 'Nour H.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=NourH' }, body: 'Revolut was the easiest for me — had a virtual card in 10 minutes and started spending immediately.', date: '2026-03-19', upvotes: 22 },
     ],
   },
   {
@@ -1270,10 +1270,10 @@ export const STATIC_QA: StaticQA[] = [
     views: 567,
     upvotes: 44,
     answer: "The absolute easiest and fastest way to open an account as an international student is using Revolut. It takes 5 minutes on your phone, you get a virtual card immediately, and you can hold both EUR and HUF with excellent exchange rates. If you prefer a classic brick-and-mortar bank, the process requires visiting a branch with your passport, residence permit, and student ID. OTP Bank is Hungary's largest bank with English-speaking staff at major branches, or you can use K&H Bank.",
-    date: '2024-08-30',
+    date: '2026-02-25',
     author: { name: 'James T.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=JamesT' },
     replies: [
-      { id: 'r12a', author: { name: 'Mei L.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=MeiL' }, body: "K&H Bank has an English app now. Opened mine in 20 minutes at the branch on Rákóczi út. Bring your lakcímkártya!", date: '2024-09-04', upvotes: 10 },
+      { id: 'r12a', author: { name: 'Mei L.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=MeiL' }, body: "K&H Bank has an English app now. Opened mine in 20 minutes at the branch on Rákóczi út. Bring your lakcímkártya!", date: '2026-03-02', upvotes: 10 },
     ],
   },
 
@@ -1286,7 +1286,7 @@ export const STATIC_QA: StaticQA[] = [
     views: 742,
     upvotes: 61,
     answer: "The Stipendium Hungaricum is Hungary's flagship international scholarship covering tuition fees, accommodation, and a monthly stipend. To apply: 1) Check if your country participates at stipendiumhungaricum.hu — over 70 countries are eligible. 2) Contact your home country's sending organization (Ministry of Education or equivalent). 3) Applications are made through your home country's nominating authority, not directly to Hungary. 4) Prepare documents: motivation letter, academic transcripts, language certificate (usually B2 in English), recommendation letters, passport copy. 5) Submit your application through the Stipendium Hungaricum online portal (usually open October–January). 6) Selected candidates are then invited to apply to specific Hungarian universities. The scholarship covers full tuition, dormitory accommodation, and a monthly stipend of 40,000–130,000 HUF.",
-    date: '2024-10-08',
+    date: '2026-03-24',
   },
   {
     id: 'qa14',
@@ -1296,14 +1296,14 @@ export const STATIC_QA: StaticQA[] = [
     views: 223,
     upvotes: 17,
     answer: "The Hungarian Diaspora Scholarship is for students of Hungarian origin living outside Hungary. Eligibility requirements: 1) You must be of Hungarian origin (Hungarian ancestry, Hungarian community membership, or Hungarian cultural ties). 2) You must be a citizen of a non-EU/EEA country (some programs accept EU citizens of Hungarian origin). 3) You must apply for admission to a Hungarian higher education institution. 4) You must have Hungarian language skills or commitment to learn Hungarian. The scholarship covers tuition fees and provides accommodation support. Applications are made through the Balassi Institute and Hungarian embassies. The program is separate from Stipendium Hungaricum and specifically targets the global Hungarian diaspora.",
-    date: '2024-07-05',
+    date: '2026-01-17',
     author: { name: 'Priya S.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=PriyaS' },
     replies: [
       {
         id: 'r14a',
         author: { name: 'Tariq N.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=TariqN' },
         body: "It's also worth mentioning that the Balassi Institute sometimes offers pre-departure language courses. Reach out to them early!",
-        date: '2024-07-12',
+        date: '2026-01-24',
         upvotes: 9,
       },
     ],
@@ -1318,21 +1318,21 @@ export const STATIC_QA: StaticQA[] = [
     views: 502,
     upvotes: 39,
     answer: "With a valid Diákigazolvány (student ID), students get 50% off BKK monthly passes. A monthly unlimited pass costs around 9,950 HUF for students (about €25). Children under 14 and passengers over 65 travel free. PhD students and some scholarship recipients may be eligible for a full-fare exemption — check with your university's student services.",
-    date: '2024-08-25',
+    date: '2026-02-15',
     author: { name: 'Luca M.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=LucaM' },
     replies: [
       {
         id: 'r15a',
         author: { name: 'Elena V.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=ElenaV' },
         body: 'Stipendium Hungaricum scholars also get free BKK passes — confirm with your university scholarship coordinator.',
-        date: '2024-09-02',
+        date: '2026-02-18',
         upvotes: 14,
       },
       {
         id: 'r15b',
         author: { name: 'Carlos F.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=CarlosF' },
         body: 'You can top up your BKK card at any metro station machine. Super easy once you have it.',
-        date: '2024-09-05',
+        date: '2026-01-13',
         upvotes: 7,
       },
     ],
@@ -1345,14 +1345,14 @@ export const STATIC_QA: StaticQA[] = [
     views: 340,
     upvotes: 27,
     answer: "EU/EEA students should bring their European Health Insurance Card (EHIC) which gives access to Hungarian public healthcare on the same terms as Hungarian citizens. Non-EU students need private health insurance covering their full stay — this is also a requirement for the visa application. Many students use travel insurance policies (e.g., Allianz, AXA) that offer student plans from €30–€60/month. Stipendium Hungaricum scholars receive a dedicated health insurance package as part of their scholarship.",
-    date: '2024-09-14',
+    date: '2026-03-07',
     author: { name: 'Nour H.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=NourH' },
     replies: [
       {
         id: 'r16a',
         author: { name: 'Anna B.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=AnnaB' },
         body: 'I used the Hungarian Student card at Semmelweis clinics and it worked perfectly. Just register with a GP first.',
-        date: '2024-09-20',
+        date: '2026-03-12',
         upvotes: 11,
       },
     ],
@@ -1365,14 +1365,14 @@ export const STATIC_QA: StaticQA[] = [
     views: 461,
     upvotes: 35,
     answer: "Absolutely — Revolut and Wise are extremely popular among international students in Budapest. Both offer free (or low-fee) accounts in minutes with virtual and physical cards. You can hold HUF alongside EUR/USD, and exchange rates are near mid-market. Most Budapest shops, restaurants, and transport accept contactless card payments. For cash (some markets/smaller cafés), Revolut lets you withdraw HUF from ATMs cheaply. Wise is particularly great for receiving scholarship payments in EUR and converting to HUF.",
-    date: '2024-10-03',
+    date: '2026-03-19',
     author: { name: 'James T.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=JamesT' },
     replies: [
       {
         id: 'r17a',
         author: { name: 'Mei L.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=MeiL' },
         body: "Revolut's standard plan gives you 5 free ATM withdrawals/month up to €200. After that there's a small fee. Still by far the cheapest option.",
-        date: '2024-10-10',
+        date: '2026-03-27',
         upvotes: 18,
       },
     ],
@@ -1387,7 +1387,7 @@ export const STATIC_QA: StaticQA[] = [
     views: 87,
     upvotes: 6,
     answer: '',
-    date: '2024-11-15',
+    date: '2026-01-31',
     author: { name: 'Omar A.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=OmarA' },
     replies: [],
   },
@@ -1399,7 +1399,7 @@ export const STATIC_QA: StaticQA[] = [
     views: 63,
     upvotes: 4,
     answer: '',
-    date: '2024-11-18',
+    date: '2026-02-07',
     author: { name: 'Ahmed K.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=AhmedK' },
     replies: [],
   },
@@ -1411,7 +1411,7 @@ export const STATIC_QA: StaticQA[] = [
     views: 45,
     upvotes: 3,
     answer: '',
-    date: '2024-11-20',
+    date: '2026-02-14',
     author: { name: 'Sofia R.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=SofiaR' },
     replies: [],
   },
@@ -1423,7 +1423,7 @@ export const STATIC_QA: StaticQA[] = [
     views: 38,
     upvotes: 2,
     answer: '',
-    date: '2024-11-22',
+    date: '2026-03-21',
     author: { name: 'Tariq N.', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=TariqN' },
     replies: [],
   },
