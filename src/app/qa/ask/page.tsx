@@ -25,6 +25,9 @@ export default function AskPage() {
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) { router.push('/auth/login'); return }
 
+    // Ensure profile exists (may be missing if created via admin path)
+    await supabase.from('profiles').upsert({ id: user.id }, { onConflict: 'id', ignoreDuplicates: true })
+
     const { data, error: err } = await supabase.from('questions').insert({
       user_id: user.id,
       title: title.trim(),

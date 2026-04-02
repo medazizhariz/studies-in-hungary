@@ -28,6 +28,9 @@ export default function AnswerForm({ questionId, userId }: Props) {
     setLoading(true)
     setError('')
 
+    // Ensure profile exists (may be missing if created via admin path)
+    await supabase.from('profiles').upsert({ id: userId }, { onConflict: 'id', ignoreDuplicates: true })
+
     const { error: err } = await supabase.from('answers').insert({
       question_id: questionId,
       user_id: userId,

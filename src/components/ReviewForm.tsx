@@ -49,6 +49,9 @@ export default function ReviewForm({ entityType, entityId, onClose }: Props) {
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) { setError('You must be signed in to leave a review.'); setLoading(false); return }
 
+    // Ensure profile exists (may be missing if created via admin path)
+    await supabase.from('profiles').upsert({ id: user.id }, { onConflict: 'id', ignoreDuplicates: true })
+
     const hasMedia = previews.length > 0
 
     const { error: err } = await supabase.from('reviews').insert({
