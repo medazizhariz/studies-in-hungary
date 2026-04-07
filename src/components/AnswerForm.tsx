@@ -1,26 +1,15 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
-import Link from 'next/link'
 
-type Props = { questionId: string; userId: string | null }
+type Props = { questionId: string; userId: string }
 
 export default function AnswerForm({ questionId, userId }: Props) {
   const supabase = createClient()
-  const router = useRouter()
   const [body, setBody] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-
-  if (!userId) {
-    return (
-      <div className="card p-5 text-center text-sm text-gray-500">
-        <Link href="/auth/login" className="text-primary-600 font-semibold hover:underline">Sign in</Link> to post an answer.
-      </div>
-    )
-  }
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -41,8 +30,7 @@ export default function AnswerForm({ questionId, userId }: Props) {
       setError(err.message)
       setLoading(false)
     } else {
-      setBody('')
-      router.refresh()
+      window.location.reload()
     }
   }
 

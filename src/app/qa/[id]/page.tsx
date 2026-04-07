@@ -109,10 +109,38 @@ export default async function QuestionDetailPage({ params }: Props) {
         </div>
       </div>
 
-      <div className="card p-5">
-        <h3 className="font-bold text-gray-900 mb-4">Your Answer</h3>
-        <AnswerForm questionId={id} userId={user?.id ?? null} />
-      </div>
+      {(() => {
+        const isOwnQuestion = user?.id === question.user_id
+        const hasAnswered = answers?.some((a) => a.user_id === user?.id) ?? false
+
+        if (!user) {
+          return (
+            <div className="card p-5 text-center text-sm text-gray-500">
+              <Link href="/auth/login" className="text-primary-600 font-semibold hover:underline">Sign in</Link> to post an answer.
+            </div>
+          )
+        }
+        if (isOwnQuestion) {
+          return (
+            <div className="card p-5 text-center text-sm text-gray-500">
+              You cannot answer your own question.
+            </div>
+          )
+        }
+        if (hasAnswered) {
+          return (
+            <div className="card p-5 text-center text-sm text-gray-500">
+              You have already answered this question.
+            </div>
+          )
+        }
+        return (
+          <div className="card p-5">
+            <h3 className="font-bold text-gray-900 mb-4">Your Answer</h3>
+            <AnswerForm questionId={id} userId={user.id} />
+          </div>
+        )
+      })()}
     </div>
   )
 }

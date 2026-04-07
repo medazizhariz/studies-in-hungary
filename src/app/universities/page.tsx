@@ -14,19 +14,32 @@ type Props = { searchParams: Promise<{ city?: string; q?: string; lang?: string 
 export default async function UniversitiesPage({ searchParams }: Props) {
   const { city, q, lang } = await searchParams
   const supabase = await createClient()
-  let query = supabase.from('universities').select('*, reviews(rating)').order('name')
+  let query = supabase.from('universities').select('*').order('name')
 
   if (city) query = query.eq('city', city)
   if (q) query = query.ilike('name', `%${q}%`)
 
-  const { data } = await query
+  const [{ data }, { data: reviewsData }] = await Promise.all([
+    query,
+    supabase.from('reviews').select('entity_id, rating').eq('entity_type', 'university'),
+  ])
+
+  // Aggregate review stats per university
+  const reviewAgg = new Map<string, { sum: number; count: number }>()
+  for (const r of reviewsData ?? []) {
+    const cur = reviewAgg.get(r.entity_id) ?? { sum: 0, count: 0 }
+    reviewAgg.set(r.entity_id, { sum: cur.sum + r.rating, count: cur.count + 1 })
+  }
 
   let unis: University[] = data?.length
-    ? (data ?? []).map(({ reviews, ...u }: any) => ({
-        ...u,
-        avg_rating: reviews.length ? reviews.reduce((s: number, r: any) => s + r.rating, 0) / reviews.length : null,
-        review_count: reviews.length,
-      }))
+    ? (data ?? []).map((u: any) => {
+        const stats = reviewAgg.get(u.id)
+        return {
+          ...u,
+          avg_rating: stats ? stats.sum / stats.count : null,
+          review_count: stats?.count ?? 0,
+        }
+      })
     : STATIC_UNIVERSITIES.map((u) => ({
         id: u.id, name: u.name, city: u.city, description: u.description,
         website: u.website, programs: u.programs, languages: u.languages,

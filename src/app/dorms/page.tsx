@@ -22,21 +22,34 @@ export default async function DormsPage({ searchParams }: Props) {
     .select('id, name, city')
     .order('name')
 
-  let query = supabase.from('dorms').select('*, reviews(rating), universities(name)').order('created_at', { ascending: false })
+  let query = supabase.from('dorms').select('*, universities(name)').order('created_at', { ascending: false })
 
   if (city) query = query.eq('city', city)
   if (q) query = query.ilike('name', `%${q}%`)
   if (uni) query = query.eq('university_id', uni)
 
-  const { data } = await query
+  const [{ data }, { data: reviewsData }] = await Promise.all([
+    query,
+    supabase.from('reviews').select('entity_id, rating').eq('entity_type', 'dorm'),
+  ])
+
+  // Aggregate review stats per dorm
+  const reviewAgg = new Map<string, { sum: number; count: number }>()
+  for (const r of reviewsData ?? []) {
+    const cur = reviewAgg.get(r.entity_id) ?? { sum: 0, count: 0 }
+    reviewAgg.set(r.entity_id, { sum: cur.sum + r.rating, count: cur.count + 1 })
+  }
 
   let dorms: Dorm[] = data?.length
-    ? (data ?? []).map(({ reviews, universities: uniData, ...d }: any) => ({
-        ...d,
-        avg_rating: reviews.length ? reviews.reduce((s: number, r: any) => s + r.rating, 0) / reviews.length : null,
-        review_count: reviews.length,
-        affiliatedUniversityName: uniData?.name ?? null,
-      }))
+    ? (data ?? []).map(({ universities: uniData, ...d }: any) => {
+        const stats = reviewAgg.get(d.id)
+        return {
+          ...d,
+          avg_rating: stats ? stats.sum / stats.count : null,
+          review_count: stats?.count ?? 0,
+          affiliatedUniversityName: uniData?.name ?? null,
+        }
+      })
     : STATIC_DORMS.map((d) => ({
         id: d.id, name: d.name, city: d.city, address: d.address,
         price_min: d.price_min, price_max: d.price_max, description: d.description,
