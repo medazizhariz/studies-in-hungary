@@ -39,6 +39,7 @@ export default function AskPage() {
       setError(err.message)
       setLoading(false)
     } else {
+      router.refresh()
       router.push(`/qa/${data.id}`)
     }
   }

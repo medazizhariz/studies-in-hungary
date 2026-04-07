@@ -39,6 +39,19 @@ export default async function UniDetailPage({ params }: Props) {
     .eq('entity_id', id)
     .order('created_at', { ascending: false })
 
+  // Check if the current user already submitted a review
+  let userHasReview = false
+  if (user) {
+    const { data: existing } = await supabase
+      .from('reviews')
+      .select('id')
+      .eq('user_id', user.id)
+      .eq('entity_type', 'university')
+      .eq('entity_id', id)
+      .maybeSingle()
+    userHasReview = !!existing
+  }
+
   const reviews = dbReviews?.length
     ? dbReviews
     : (staticUni?.reviews ?? []).map((r) => ({
@@ -151,7 +164,7 @@ export default async function UniDetailPage({ params }: Props) {
               <h2 className="font-bold text-gray-900">
                 Reviews {reviews.length ? `(${reviews.length})` : ''}
               </h2>
-              <ReviewFormToggle entityType="university" entityId={uni?.id ?? id} userId={user?.id ?? null} />
+              <ReviewFormToggle entityType="university" entityId={uni?.id ?? id} userId={user?.id ?? null} hasReviewed={userHasReview} />
             </div>
             {reviews.length === 0 ? (
               <p className="text-sm text-gray-400 py-8 text-center">No reviews yet. Be the first!</p>

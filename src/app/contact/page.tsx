@@ -146,10 +146,10 @@ export default function ContactPage() {
             { icon: '⏱️', title: 'Response Time', value: '1–2 business days' },
             { icon: '🌍', title: 'Based in', value: 'Budapest, Hungary' },
           ].map((item) => (
-            <div key={item.title} className="card p-4 flex flex-col items-center justify-center text-center">
-              <div className="text-2xl mb-2 leading-none">{item.icon}</div>
+            <div key={item.title} className="card p-5 flex flex-col items-center justify-center text-center min-h-[96px]">
+              <div className="text-3xl mb-2">{item.icon}</div>
               <p className="text-xs text-gray-400 font-medium">{item.title}</p>
-              <p className="text-sm font-semibold text-gray-900 dark:text-gray-100 mt-0.5">{item.value}</p>
+              <p className="text-sm font-semibold text-gray-900 dark:text-gray-100 mt-0.5 break-all">{item.value}</p>
             </div>
           ))}
         </div>

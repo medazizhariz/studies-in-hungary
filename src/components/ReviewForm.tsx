@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useRef } from 'react'
-import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import StarRating from './StarRating'
 
@@ -14,7 +13,6 @@ type Props = {
 type FilePreview = { file: File; url: string }
 
 export default function ReviewForm({ entityType, entityId, onClose }: Props) {
-  const router = useRouter()
   const supabase = createClient()
   const [rating, setRating] = useState(0)
   const [title, setTitle] = useState('')
@@ -65,11 +63,14 @@ export default function ReviewForm({ entityType, entityId, onClose }: Props) {
     })
 
     if (err) {
-      setError(err.message)
+      if (err.message.includes('reviews_one_per_user') || err.message.includes('unique')) {
+        setError('You have already reviewed this. Refresh the page to see your review.')
+      } else {
+        setError(err.message)
+      }
       setLoading(false)
     } else {
-      router.refresh()
-      onClose?.()
+      window.location.reload()
     }
   }
 

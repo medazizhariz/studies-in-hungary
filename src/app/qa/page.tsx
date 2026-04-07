@@ -33,6 +33,10 @@ export default async function QAPage({ searchParams }: Props) {
     answer_count: answers.length,
   }))
 
+  // Split into unanswered and answered
+  const unansweredQuestions = dbQuestions.filter((q) => (q.answer_count ?? 0) === 0)
+  const answeredQuestions = dbQuestions.filter((q) => (q.answer_count ?? 0) > 0)
+
   // Filter static Q&A
   let staticQuestions = STATIC_QA
   if (cat) staticQuestions = staticQuestions.filter((sq) => sq.category === cat)
@@ -72,10 +76,35 @@ export default async function QAPage({ searchParams }: Props) {
         {/* Community questions from DB */}
         {hasDbData && (
           <>
-            <p className="text-xs text-gray-400 mb-5">{dbQuestions.length} community question{dbQuestions.length !== 1 ? 's' : ''}</p>
-            <div className="space-y-3 mb-10">
-              {dbQuestions.map((question) => <QuestionCard key={question.id} question={question} />)}
-            </div>
+            {/* Unanswered section */}
+            {unansweredQuestions.length > 0 && (
+              <div className="mb-8">
+                <h2 className="font-bold text-gray-900 text-lg mb-4 flex items-center gap-2">
+                  <span className="badge bg-amber-100 text-amber-800">Unanswered</span>
+                  <span>{unansweredQuestions.length} question{unansweredQuestions.length !== 1 ? 's' : ''} waiting for answers</span>
+                </h2>
+                <div className="space-y-3">
+                  {unansweredQuestions.map((question) => (
+                    <QuestionCard key={question.id} question={question} />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Answered section */}
+            {answeredQuestions.length > 0 && (
+              <div className="mb-10">
+                <h2 className="font-bold text-gray-900 text-lg mb-4 flex items-center gap-2">
+                  <span className="badge bg-green-100 text-green-800">Answered</span>
+                  <span>{answeredQuestions.length} answered question{answeredQuestions.length !== 1 ? 's' : ''}</span>
+                </h2>
+                <div className="space-y-3">
+                  {answeredQuestions.map((question) => (
+                    <QuestionCard key={question.id} question={question} />
+                  ))}
+                </div>
+              </div>
+            )}
           </>
         )}
 

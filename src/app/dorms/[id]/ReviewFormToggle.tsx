@@ -8,9 +8,10 @@ type Props = {
   entityType: 'dorm' | 'university'
   entityId: string
   userId: string | null
+  hasReviewed?: boolean
 }
 
-export default function ReviewFormToggle({ entityType, entityId, userId }: Props) {
+export default function ReviewFormToggle({ entityType, entityId, userId, hasReviewed }: Props) {
   const [open, setOpen] = useState(false)
 
   if (!userId) {
@@ -18,6 +19,14 @@ export default function ReviewFormToggle({ entityType, entityId, userId }: Props
       <Link href="/auth/login" className="btn-secondary text-sm">
         Sign in to review
       </Link>
+    )
+  }
+
+  if (hasReviewed) {
+    return (
+      <span className="text-sm text-green-700 font-semibold bg-green-50 border border-green-200 px-3 py-1.5 rounded-lg">
+        ✓ You reviewed this
+      </span>
     )
   }
 

@@ -8,8 +8,8 @@ import Link from 'next/link'
 type Props = { questionId: string; userId: string | null }
 
 export default function AnswerForm({ questionId, userId }: Props) {
-  const router = useRouter()
   const supabase = createClient()
+  const router = useRouter()
   const [body, setBody] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
