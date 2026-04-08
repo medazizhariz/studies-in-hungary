@@ -151,9 +151,9 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
     avg_rating: 4.6,
     review_count: 3,
     reviews: [
-      { id: 'er1', name: 'Maria S.', rating: 5, title: 'World-class education', body: 'ELTE has been an incredible experience. The Faculty of Science is top-notch and the city makes it all the better. Research opportunities are abundant.', date: '2024-09-15' },
-      { id: 'er2', name: 'Ahmed K.', rating: 4, title: 'Great programs, bureaucracy can be slow', body: 'The quality of education is excellent but administrative processes take time. The campus is beautiful and Budapest is a great student city.', date: '2024-07-22' },
-      { id: 'er3', name: 'Julia P.', rating: 5, title: 'Best decision of my life', body: 'Studying Law at ELTE has been amazing. The professors are experienced practitioners and the international student community is very welcoming.', date: '2024-03-10' },
+      { id: 'er1', name: 'Amara Diallo', rating: 5, title: 'World-class education in the heart of Budapest', body: 'ELTE has been a transformative experience. The Faculty of Science is outstanding and research opportunities are truly abundant. The international community makes settling in very easy.', date: '2026-01-12' },
+      { id: 'er2', name: 'Tomáš Novák', rating: 4, title: 'Excellent programs, worth the administrative patience', body: 'Quality of education is genuinely excellent, especially in Informatics and Law. Admin processes can be slow but the academic experience more than makes up for it.', date: '2026-02-20' },
+      { id: 'er3', name: 'Selin Yıldız', rating: 5, title: 'The best choice for social sciences in Central Europe', body: 'Studying at the Faculty of Social Sciences has exceeded all my expectations. Professors are leading researchers and the Budapest setting adds so much to student life.', date: '2026-03-28' },
     ],
   },
   {
@@ -196,9 +196,9 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
     avg_rating: 4.4,
     review_count: 3,
     reviews: [
-      { id: 'er4', name: 'Luca T.', rating: 5, title: 'Rigorous but rewarding', body: 'BME is not easy but the quality of education is outstanding. My Computer Engineering degree is recognized worldwide. The campus facilities are excellent.', date: '2024-11-01' },
-      { id: 'er5', name: 'Omar A.', rating: 4, title: 'Strong engineering tradition', body: 'Great reputation globally. The workload is heavy but professors are supportive. Budapest makes student life very enjoyable between exam periods.', date: '2024-08-18' },
-      { id: 'er6', name: 'Sophie M.', rating: 4, title: 'Architecture degree worth every penny', body: 'The Faculty of Architecture has a perfect studio culture and inspiring professors. Budapest itself is a living museum of architecture.', date: '2024-05-30' },
+      { id: 'er4', name: 'Kofi Asante', rating: 5, title: 'Rigorous but absolutely worth it', body: 'BME is one of the hardest universities in Hungary but the quality is unmatched. My Electrical Engineering degree is recognized everywhere. The labs and campus facilities are excellent.', date: '2026-01-18' },
+      { id: 'er5', name: 'Elena Varga', rating: 4, title: 'Strong engineering tradition, great campus life', body: 'Great global reputation and professors who have real industry experience. The workload is demanding but Budapest makes studying here genuinely enjoyable.', date: '2026-02-25' },
+      { id: 'er6', name: 'Riya Patel', rating: 4, title: 'Architecture studies in a living museum', body: 'The Faculty of Architecture has an inspiring studio culture and professors who are practicing architects. Budapest itself teaches you architecture just by walking around.', date: '2026-04-01' },
     ],
   },
   {
@@ -238,9 +238,9 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
     avg_rating: 4.3,
     review_count: 3,
     reviews: [
-      { id: 'er7', name: 'Elena V.', rating: 5, title: 'Best business school in Central Europe', body: 'Corvinus has a fantastic reputation in business. Great alumni network, regular industry events, and the campus is stunning. Finance program is excellent.', date: '2024-10-12' },
-      { id: 'er8', name: 'David L.', rating: 4, title: 'Strong academic reputation', body: 'The MSc in International Business has been very practical. Lots of case studies and real business projects. Location in Budapest is a huge plus.', date: '2024-06-05' },
-      { id: 'er9', name: 'Fatima B.', rating: 4, title: 'Great for networking', body: 'The alumni network is strong and professors often bring in industry guests. International student community is very active here.', date: '2024-02-28' },
+      { id: 'er7', name: 'Magnus Eriksson', rating: 5, title: 'Best business school in Central Europe', body: 'Corvinus has a fantastic reputation across Europe. The alumni network is impressive, industry events are frequent, and the riverside campus is stunning. The Finance program is top quality.', date: '2026-01-22' },
+      { id: 'er8', name: 'Fatou Diallo', rating: 4, title: 'Practical and internationally oriented', body: 'The MSc in International Business is very hands-on with real case studies and business projects. The Budapest location is a huge advantage for internships and networking.', date: '2026-02-14' },
+      { id: 'er9', name: 'Ivan Petrov', rating: 4, title: 'Strong connections and active community', body: 'The alumni network opens doors across the region. Professors regularly bring in senior industry professionals as guest speakers. The international student community is very engaged.', date: '2026-03-18' },
     ],
   },
   {
@@ -279,9 +279,9 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
     avg_rating: 4.7,
     review_count: 3,
     reviews: [
-      { id: 'er10', name: 'Aryan P.', rating: 5, title: 'Top medical school in Europe', body: 'The English-language medicine program at Semmelweis is internationally recognized. Clinical training is excellent and Budapest is perfect for medical students.', date: '2024-09-20' },
-      { id: 'er11', name: 'Nadia H.', rating: 5, title: 'Intense but incredibly rewarding', body: 'Medical school is tough everywhere but Semmelweis really prepares you well. The hospital training facilities are modern and professors are genuinely helpful.', date: '2024-07-14' },
-      { id: 'er12', name: 'Carlos M.', rating: 4, title: 'Excellent for international students', body: 'Coming from abroad, the university provides great support. The English program is well organized and the diploma is recognized across Europe and beyond.', date: '2024-04-03' },
+      { id: 'er10', name: 'Chisom Eze', rating: 5, title: 'Top medical school in Central Europe', body: 'The English-language medicine program at Semmelweis is internationally recognized and thoroughly rigorous. Clinical training starts early and Budapest is a perfect city for medical students.', date: '2026-01-08' },
+      { id: 'er11', name: 'Anika Müller', rating: 5, title: 'Intense but incredibly rewarding', body: 'Semmelweis prepares you like no other school. The hospital training facilities are modern and professors genuinely invest in your development. Worth every challenging moment.', date: '2026-02-22' },
+      { id: 'er12', name: 'Rafael Santos', rating: 4, title: 'Excellent support for international students', body: 'Coming from Brazil, the international student support was exceptional. The English program is well-organized and the diploma is recognized across Europe, the US, and beyond.', date: '2026-03-30' },
     ],
   },
   {
@@ -318,9 +318,9 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
     avg_rating: 4.8,
     review_count: 3,
     reviews: [
-      { id: 'er13', name: 'Simone A.', rating: 5, title: 'World-class research environment', body: 'CEU is unlike any other university. The intellectual environment is stimulating, professors are globally recognized scholars, and the international community is extraordinary.', date: '2024-11-08' },
-      { id: 'er14', name: 'Kwame O.', rating: 5, title: 'Changed my worldview', body: "The MA in International Relations is rigorous and thought-provoking. You're surrounded by brilliant people from all over the world. Best decision I ever made.", date: '2024-08-25' },
-      { id: 'er15', name: 'Priya R.', rating: 4, title: 'Exceptional but intense', body: 'CEU is academically intense but the quality of teaching is unmatched. The library and research resources are excellent. Cost of living in Budapest is very manageable.', date: '2024-05-17' },
+      { id: 'er13', name: 'Naomi Okafor', rating: 5, title: 'World-class research environment unlike any other', body: 'CEU is truly exceptional. The intellectual atmosphere is electric, professors are globally recognized scholars, and the international student body is extraordinary. Every seminar feels like a mini-conference.', date: '2026-01-15' },
+      { id: 'er14', name: 'Benedikt Schneider', rating: 5, title: 'Completely changed how I think', body: "The MA in Political Science is rigorous and genuinely transformative. You're surrounded by brilliant people from over 80 countries. The small cohort size means real mentorship from faculty.", date: '2026-02-28' },
+      { id: 'er15', name: 'Aya Tanaka', rating: 4, title: 'Exceptional quality, intense workload', body: 'CEU is academically demanding but the teaching quality is unmatched anywhere I have seen. Library resources are outstanding and Budapest keeps the cost of living very reasonable.', date: '2026-04-02' },
     ],
   },
   {
@@ -351,9 +351,9 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
     avg_rating: 3.7,
     review_count: 3,
     reviews: [
-      { id: 'er16', name: 'Ines C.', rating: 4, title: 'Great for creative fields', body: 'The Design program is very practical and industry-connected. Professors are working professionals which adds a lot of value. Modern campus facilities too.', date: '2024-09-05' },
-      { id: 'er17', name: 'Tomás R.', rating: 4, title: 'Tourism program is excellent', body: 'Learning Tourism Management in Budapest is perfect — the city itself is a living classroom. Great internship opportunities through university connections.', date: '2024-06-22' },
-      { id: 'er18', name: 'Aisha K.', rating: 3, title: 'Good but admin could improve', body: 'The academic quality is solid and teachers are engaging. Administrative processes could be smoother but overall a good choice for business and creative studies.', date: '2024-03-18' },
+      { id: 'er16', name: 'Claudia Ferreira', rating: 4, title: 'Great for creative and business fields', body: 'The Design program is very practical and industry-connected. Professors are working professionals which adds enormous value. The campus facilities are modern and well-equipped.', date: '2026-01-25' },
+      { id: 'er17', name: 'Rodrigo Alves', rating: 4, title: 'Tourism program is excellent here', body: 'Studying Tourism Management in Budapest is perfect — the city is a living classroom. Internship connections through the university are genuine and very helpful for finding placements.', date: '2026-03-07' },
+      { id: 'er18', name: 'Zara Ahmed', rating: 3, title: 'Good academics, admin could be smoother', body: 'Academic quality is solid and the teachers are engaging and approachable. Administrative processes can be slow at times but overall it is a good choice for business and creative programs.', date: '2026-04-05' },
     ],
   },
   {
@@ -391,9 +391,9 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
     avg_rating: 3.7,
     review_count: 3,
     reviews: [
-      { id: 'er19', name: 'Peter B.', rating: 4, title: 'Hands-on engineering education', body: 'Óbuda provides very practical engineering education. Labs are well-equipped and you get real industry exposure. Great for robotics and automation.', date: '2024-10-30' },
-      { id: 'er20', name: 'Jana H.', rating: 4, title: 'Good IT programs', body: 'The Informatics faculty is strong and professors have real industry experience. Smaller class sizes mean more attention from teachers.', date: '2024-07-09' },
-      { id: 'er21', name: 'Mikael S.', rating: 3, title: 'Decent but underrated', body: 'Often overshadowed by BME but Óbuda has solid programs, especially in applied engineering. The campus is accessible by public transit.', date: '2024-04-20' },
+      { id: 'er19', name: 'Mikhail Sorokin', rating: 4, title: 'Hands-on engineering with real industry exposure', body: 'Óbuda provides genuinely practical engineering education. Labs are well-equipped and you work on real industry problems from early on. Robotics and automation courses are especially strong.', date: '2026-01-30' },
+      { id: 'er20', name: 'Hana Novotná', rating: 4, title: 'Strong IT programs and small class sizes', body: 'The Neumann János Faculty of Informatics is solid and professors bring genuine industry experience into the classroom. Smaller cohorts mean much more personal attention than bigger universities.', date: '2026-02-18' },
+      { id: 'er21', name: 'Luis Torres', rating: 3, title: 'Underrated practical engineering school', body: 'Often overlooked in favour of BME but Óbuda has excellent applied engineering programs. The transit connections to the city center are great. Good choice for students who want industry skills fast.', date: '2026-03-22' },
     ],
   },
   {
@@ -425,9 +425,9 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
     avg_rating: 4.7,
     review_count: 3,
     reviews: [
-      { id: 'er22', name: 'Emma L.', rating: 5, title: 'Outstanding vet school', body: 'The English-language DVM program is exceptional. Clinical training with real animals starts early. The university has modern veterinary hospitals for practice.', date: '2024-08-12' },
-      { id: 'er23', name: 'Marcus J.', rating: 5, title: 'Globally recognized diploma', body: 'The DVM from Budapest is recognized in the EU, USA, Canada and many other countries. Professors are leading experts and the community is very international.', date: '2024-05-28' },
-      { id: 'er24', name: 'Ananya G.', rating: 4, title: 'Intensive but worth it', body: 'Veterinary medicine here is very demanding but the quality is unmatched. International student support is very good.', date: '2024-02-14' },
+      { id: 'er22', name: 'Priya Krishnamurthy', rating: 5, title: 'Outstanding vet school, globally respected', body: 'The English-language DVM program is truly exceptional. Clinical training with real animals begins very early in the program. The university veterinary hospitals are modern and well-equipped.', date: '2026-01-10' },
+      { id: 'er23', name: 'Oliver Bennett', rating: 5, title: 'Globally recognized diploma worth every effort', body: 'The DVM degree from Budapest is recognized in the EU, USA, Canada and beyond. Professors are world-leading experts and the student community is wonderfully international.', date: '2026-02-16' },
+      { id: 'er24', name: 'Mei-Ling Chen', rating: 4, title: 'Intensive program, excellent results', body: 'Veterinary medicine here is extremely demanding but the quality of training is unmatched. The international student support services are very well organized and helpful.', date: '2026-03-25' },
     ],
   },
   {
@@ -461,9 +461,9 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
     avg_rating: 4.7,
     review_count: 3,
     reviews: [
-      { id: 'er25', name: 'Valentina R.', rating: 5, title: 'A dream come true for artists', body: "Studying fine arts in Budapest is magical. The historic building, the city's art scene, and the freedom to experiment make MKE special. Professors are internationally exhibited artists.", date: '2024-09-28' },
-      { id: 'er26', name: 'Benjamin K.', rating: 4, title: 'Small but excellent', body: 'MKE is a small institution which means personal attention from professors. The studio facilities are good and you\'re surrounded by talented peers.', date: '2024-06-15' },
-      { id: 'er27', name: 'Nora F.', rating: 5, title: 'Best decision for my art career', body: "The Painting program pushes you in ways you don't expect. Budapest's vibrant art scene complements everything you learn inside the studio beautifully.", date: '2024-03-07' },
+      { id: 'er25', name: 'Alessia Romano', rating: 5, title: 'A dream come true for artists', body: "Studying fine arts in Budapest is magical. The historic building, the city's remarkable art scene, and the freedom to experiment make MKE very special. Professors are internationally exhibited artists.", date: '2026-01-20' },
+      { id: 'er26', name: 'Kwabena Asante', rating: 4, title: 'Small institution with excellent personal attention', body: "MKE is a small institution which means real personal attention from professors. The studio facilities are well-maintained and you're surrounded by genuinely talented peers.", date: '2026-02-28' },
+      { id: 'er27', name: 'Sofía Morales', rating: 5, title: 'Best decision I made for my art career', body: "The Painting program pushes you in unexpected and wonderful ways. Budapest's vibrant gallery scene beautifully complements everything you learn inside the studio.", date: '2026-04-03' },
     ],
   },
   {
@@ -498,9 +498,9 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
     avg_rating: 4.8,
     review_count: 3,
     reviews: [
-      { id: 'er28', name: 'Elena B.', rating: 5, title: 'The best conservatory in the world', body: 'Training at the Liszt Academy is an incredible honor. The level of teaching is extraordinary and the building itself is one of the most beautiful in Budapest.', date: '2024-10-05' },
-      { id: 'er29', name: 'Roberto C.', rating: 5, title: 'World-class conservatory', body: 'The faculty are all internationally performing musicians. You learn alongside incredibly talented students from all over the world.', date: '2024-07-30' },
-      { id: 'er30', name: 'Soo-Jin P.', rating: 4, title: 'Demanding but exceptional', body: 'Practice rooms are always busy and competition is fierce, but the quality of teaching is worth it. Budapest is a great city for classical music lovers.', date: '2024-04-12' },
+      { id: 'er28', name: 'Yuki Hashimoto', rating: 5, title: 'One of the finest conservatories in the world', body: 'Training at the Liszt Academy is a true honor. The level of teaching is extraordinary and the Art Nouveau building is among the most beautiful in all of Budapest. An unforgettable experience.', date: '2026-01-14' },
+      { id: 'er29', name: 'Caterina Bianchi', rating: 5, title: 'World-class conservatory, inspiring every day', body: 'The faculty are all internationally performing musicians at the top of their careers. You learn alongside extraordinarily talented students from all over the world.', date: '2026-02-22' },
+      { id: 'er30', name: "James O'Brien", rating: 4, title: 'Demanding but truly exceptional', body: 'Practice rooms are always in high demand and competition among students is fierce, but the quality of teaching and mentorship is absolutely worth it. Budapest is a great city for classical music.', date: '2026-03-15' },
     ],
   },
   {
@@ -534,9 +534,9 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
     avg_rating: 4.3,
     review_count: 3,
     reviews: [
-      { id: 'er31', name: 'Miklos V.', rating: 5, title: 'Legendary film school', body: 'SZFE has produced some of the world\'s best filmmakers. The hands-on approach to filmmaking and the tight-knit student community make it an unforgettable experience.', date: '2024-09-10' },
-      { id: 'er32', name: 'Anna S.', rating: 4, title: 'Challenging but creatively fulfilling', body: 'Acting here is intense. You\'re pushed to your limits which ultimately makes you much better. The professors are working professionals.', date: '2024-06-28' },
-      { id: 'er33', name: 'James W.', rating: 4, title: 'Great for aspiring directors', body: 'The Directing program is world-renowned. You make real short films and have them screened publicly from year one.', date: '2024-03-22' },
+      { id: 'er31', name: 'Nikolaj Petersen', rating: 5, title: 'A legendary film school with real hands-on training', body: "SZFE has produced some of the world's most acclaimed filmmakers. The hands-on approach and the tight-knit student community create an unforgettable creative environment unlike anywhere else.", date: '2026-01-24' },
+      { id: 'er32', name: 'Mariam Nassir', rating: 4, title: 'Challenging but deeply creatively fulfilling', body: "Acting training here is intense and demanding. You're pushed to your absolute limits, which ultimately makes you a much better performer. The professors are all working stage and screen professionals.", date: '2026-03-02' },
+      { id: 'er33', name: 'Hugo Dubois', rating: 4, title: 'World-renowned directing program', body: 'The Film Directing program has a global reputation. You shoot real short films that are publicly screened from the very first year. The feedback from professors is rigorous and invaluable.', date: '2026-04-06' },
     ],
   },
   {
@@ -568,9 +568,9 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
     avg_rating: 3.7,
     review_count: 3,
     reviews: [
-      { id: 'er34', name: 'Layla M.', rating: 4, title: 'Truly international atmosphere', body: 'IBS feels like a mini United Nations. Learning business in such a diverse environment is incredibly valuable. The English-only environment helps immensely.', date: '2024-10-18' },
-      { id: 'er35', name: 'Tom H.', rating: 4, title: 'Great choice for international students', body: 'The support for international students here is excellent. Career services are active and Budapest is a great base for travelling Europe during breaks.', date: '2024-07-03' },
-      { id: 'er36', name: 'Yuki T.', rating: 3, title: 'Good school, smaller community', body: 'Solid programs and helpful faculty. The smaller size can feel limiting sometimes but it also means everyone knows each other.', date: '2024-04-25' },
+      { id: 'er34', name: 'Abiodun Adewale', rating: 4, title: 'Truly international atmosphere every day', body: 'IBS feels like a mini United Nations. Learning business in such a diverse, multicultural environment is incredibly valuable. The English-only setting helps you adapt and communicate confidently.', date: '2026-01-28' },
+      { id: 'er35', name: 'Charlotte Williams', rating: 4, title: 'Excellent support for international students', body: 'The international student support at IBS is genuinely excellent. Career services are proactive and Budapest is a fantastic hub for exploring Europe during semester breaks.', date: '2026-02-19' },
+      { id: 'er36', name: 'Kenta Yamamoto', rating: 3, title: 'Good school with a close community feel', body: 'Solid programs and approachable faculty. The smaller size can feel limiting at times compared to larger universities, but it also means everyone knows each other personally.', date: '2026-03-27' },
     ],
   },
   {
@@ -606,9 +606,9 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
     avg_rating: 4.0,
     review_count: 3,
     reviews: [
-      { id: 'er37', name: 'Isabella F.', rating: 4, title: 'Traditional university with modern outlook', body: 'PPKE offers a wonderful mix of traditional values and modern education. The Law faculty is highly respected and library resources are excellent.', date: '2024-09-01' },
-      { id: 'er38', name: 'Daniel K.', rating: 4, title: 'Strong IT program', body: 'The Faculty of Information Technology is one of the best in Hungary. Small class sizes and dedicated professors. Great Erasmus opportunities.', date: '2024-06-10' },
-      { id: 'er39', name: 'Sofia R.', rating: 4, title: 'Warm community atmosphere', body: 'PPKE has a close-knit community feel despite being a full research university. Very supportive for international students.', date: '2024-02-20' },
+      { id: 'er37', name: 'Beatriz Oliveira', rating: 4, title: 'Traditional values combined with a modern outlook', body: 'PPKE offers a wonderful blend of deep academic tradition and contemporary education. The Law faculty is highly respected and the library resources are exceptional.', date: '2026-01-16' },
+      { id: 'er38', name: 'Stefan Müller', rating: 4, title: 'One of the best IT faculties in Hungary', body: 'The Faculty of Information Technology and Bionics is genuinely outstanding. Small class sizes and dedicated professors who know their students. Great Erasmus and research opportunities.', date: '2026-02-25' },
+      { id: 'er39', name: 'Aditi Sharma', rating: 4, title: 'Warm community atmosphere throughout', body: 'PPKE has a wonderfully close-knit community feel despite being a full research university. Professors and staff are very supportive of international students throughout the year.', date: '2026-03-28' },
     ],
   },
   {
@@ -641,9 +641,9 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
     avg_rating: 3.7,
     review_count: 3,
     reviews: [
-      { id: 'er40', name: 'Viktor B.', rating: 4, title: 'Unique and respected institution', body: 'NKE offers programs you simply cannot find anywhere else in Hungary. Public administration and law enforcement degrees are highly respected by employers in the public sector.', date: '2024-10-22' },
-      { id: 'er41', name: 'Hana Z.', rating: 3, title: 'Specialized but limited', body: 'Good for those pursuing careers in public service or law enforcement. Not for everyone, but if you want to work in government or defense, this is the place.', date: '2024-07-17' },
-      { id: 'er42', name: 'Alex O.', rating: 4, title: 'Strong military science program', body: 'The Military Science faculty is well-resourced and professors have real field experience. English programs are growing.', date: '2024-04-08' },
+      { id: 'er40', name: 'Aleksandr Volkov', rating: 4, title: 'Unique and highly respected institution', body: 'NKE offers programs you simply cannot find anywhere else in Hungary. Public administration and law enforcement degrees are highly regarded by employers throughout the public sector.', date: '2026-01-22' },
+      { id: 'er41', name: 'Aminata Diallo', rating: 3, title: 'Highly specialized but rewarding if it fits your goals', body: 'Perfect for those pursuing careers in public service or law enforcement. Not for everyone, but if your goal is government, defense, or security services, this is absolutely the place to be.', date: '2026-02-28' },
+      { id: 'er42', name: 'Seun Adeyinka', rating: 4, title: 'Strong military science program with real expertise', body: 'The Military Sciences faculty is very well-resourced and professors bring genuine field experience into every lecture. English-language programs are expanding and improving rapidly.', date: '2026-04-04' },
     ],
   },
   {
@@ -682,9 +682,9 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
     avg_rating: 4.3,
     review_count: 3,
     reviews: [
-      { id: 'er43', name: 'Amara D.', rating: 5, title: 'Excellent medical program', body: 'The English-language medical program at Debrecen is internationally recognized. Clinical training is thorough and the city is very student-friendly and affordable.', date: '2024-10-10' },
-      { id: 'er44', name: 'Ivan K.', rating: 4, title: 'Great value outside Budapest', body: 'Debrecen is much cheaper than Budapest for students. The university is well-organized with strong English support. A great choice for medicine or dentistry.', date: '2024-07-25' },
-      { id: 'er45', name: 'Mei L.', rating: 4, title: 'Welcoming international community', body: 'Large international student body makes it easy to settle in. The campus is modern and facilities are top-notch. Debrecen is a pleasant city to live in.', date: '2024-04-15' },
+      { id: 'er43', name: 'Chiamaka Okonkwo', rating: 5, title: 'Excellent medical program, internationally recognized', body: 'The English-language medical program at Debrecen is internationally recognized and very thorough. Clinical training is comprehensive and the city is extremely student-friendly and affordable.', date: '2026-01-12' },
+      { id: 'er44', name: 'Boris Ivanov', rating: 4, title: 'Great value for a world-class education outside Budapest', body: 'Debrecen is significantly cheaper than Budapest for students. The university is well-organized, English support is strong, and the medical and dentistry programs are excellent.', date: '2026-02-20' },
+      { id: 'er45', name: 'Jing Wei', rating: 4, title: 'Welcoming and vibrant international community', body: 'The large international student community makes settling in very easy and enjoyable. Campus facilities are modern and top-notch. Debrecen is a very pleasant and safe city to live in.', date: '2026-03-25' },
     ],
   },
   {
@@ -722,9 +722,9 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
     avg_rating: 4.2,
     review_count: 3,
     reviews: [
-      { id: 'er46', name: 'Fatou B.', rating: 4, title: 'Wonderful university in a sunny city', body: 'Szeged is famous for its sunshine and the university lives up to its reputation. Great science programs and very affordable student life compared to Budapest.', date: '2024-09-30' },
-      { id: 'er47', name: 'Tomasz W.', rating: 4, title: 'Strong medicine and pharmacy', body: 'The Faculty of Medicine is well-regarded internationally. Good clinical exposure and helpful professors. Szeged is a charming city with a great student atmosphere.', date: '2024-06-18' },
-      { id: 'er48', name: 'Ana C.', rating: 4, title: 'Highly recommend for science students', body: 'The natural sciences facilities are excellent. Research opportunities are plentiful and professors are approachable. The city is safe, affordable, and lively.', date: '2024-03-22' },
+      { id: 'er46', name: 'Adaora Eze', rating: 4, title: 'Wonderful university in Hungary\'s sunniest city', body: 'Szeged is famous for its sunshine and the university genuinely lives up to its strong reputation. Great science and pharmacy programs, and student life is very affordable compared to Budapest.', date: '2026-01-18' },
+      { id: 'er47', name: 'Marcin Kowalski', rating: 4, title: 'Strong medicine and pharmacy programs', body: 'The Faculty of Medicine is well-regarded internationally and provides good early clinical exposure. Professors are approachable and helpful. Szeged is a charming city with a vibrant student atmosphere.', date: '2026-02-26' },
+      { id: 'er48', name: 'Carolina Gómez', rating: 4, title: 'Highly recommend for natural sciences', body: 'The natural sciences and informatics facilities are excellent and well-funded. Research opportunities are plentiful and professors are genuinely approachable. Szeged is safe, affordable, and lively.', date: '2026-04-01' },
     ],
   },
   {
@@ -760,9 +760,9 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
     avg_rating: 4.4,
     review_count: 3,
     reviews: [
-      { id: 'er49', name: 'Hassan M.', rating: 5, title: 'Europe\'s oldest university experience', body: 'Studying at one of Europe\'s oldest universities is an incredible feeling. The medical school is excellent, the city is beautiful and very affordable.', date: '2024-11-05' },
-      { id: 'er50', name: 'Giulia R.', rating: 4, title: 'Beautiful city, strong programs', body: 'Pécs is a gem — Mediterranean feel, great food, and a very international student community. The university is well-organized with good English support.', date: '2024-08-02' },
-      { id: 'er51', name: 'Yusuf A.', rating: 4, title: 'Great for medicine and dentistry', body: 'The English-language medicine program is rigorous but excellent. Clinical placement starts early. Pécs is a fantastic city for students with low cost of living.', date: '2024-05-10' },
+      { id: 'er49', name: 'Yusuf Ibrahim', rating: 5, title: 'Studying at one of Europe\'s oldest universities', body: 'The feeling of studying at one of Europe\'s oldest universities is genuinely special. The Medical School is excellent, the city is beautiful and charming, and living costs are very affordable.', date: '2026-01-08' },
+      { id: 'er50', name: 'Valentina Russo', rating: 4, title: 'Beautiful city with strong academic programs', body: 'Pécs is a real gem — Mediterranean feel, wonderful food scene, and a very international student community. The university is well-organized with solid English support across most faculties.', date: '2026-02-17' },
+      { id: 'er51', name: 'Emre Kaya', rating: 4, title: 'Excellent for medicine and dentistry studies', body: 'The English-language medicine program is rigorous and genuinely excellent. Clinical placements begin early in the curriculum. Pécs is a fantastic student city with one of the lowest costs of living in Hungary.', date: '2026-03-22' },
     ],
   },
   {
@@ -772,8 +772,8 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
     city: 'Győr',
     founded: 1968,
     description: "Széchenyi István University in Győr is Hungary's leading technical university outside Budapest, with strong ties to the automotive and engineering industries. Home to partnerships with Audi Hungária and other major manufacturers, it offers cutting-edge engineering, business, and IT programs in a dynamic industrial city.",
-    faculties: ['Faculty of Engineering Sciences', 'Faculty of Information Engineering', 'Faculty of Architecture, Civil Engineering and Transport Sciences', 'Faculty of Economics and Business Administration', 'Faculty of Law and Political Sciences', 'Faculty of Health and Sport Sciences', 'Deák Ferenc Faculty of Law and Political Sciences'],
-    programs: ['Mechanical Engineering', 'Electrical Engineering', 'Computer Science', 'Business Administration', 'Architecture', 'Transport Engineering'],
+    faculties: ['Albert Kázmér Faculty of Mosonmagyaróvár', 'Apáczai Csere János Faculty of Humanities, Education and Social Sciences', 'Audi Hungaria Faculty of Automotive Engineering', 'Deák Ferenc Faculty of Law and Political Sciences', 'Faculty of Architecture, Civil Engineering and Transport Sciences', 'Faculty of Design and Performance Arts', 'Faculty of Health and Sport Sciences', 'Faculty of Mechanical Engineering, Informatics and Electrical Engineering', 'Kautz Gyula Faculty of Business and Economics'],
+    programs: ['Mechanical Engineering', 'Automotive Engineering', 'Computer Science', 'Business Administration', 'Architecture', 'Transport Engineering', 'Law'],
     degree_levels: ['Bachelor', 'Master', 'PhD'],
     languages: ['Hungarian', 'English', 'German'],
     website: 'https://sze.hu/en',
@@ -784,20 +784,22 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
     ],
     imageCaptions: ['Széchenyi István University — Modern Campus', 'Engineering Facilities — Győr'],
     facultyLinks: [
-      { name: 'Faculty of Engineering Sciences', url: 'https://sze.hu/en/faculties/faculty-of-engineering-sciences' },
-      { name: 'Faculty of Information Engineering', url: 'https://sze.hu/en/faculties/faculty-of-information-engineering' },
-      { name: 'Faculty of Architecture, Civil Engineering and Transport Sciences', url: 'https://sze.hu/en/faculties/faculty-of-architecture-civil-engineering-and-transport-sciences' },
-      { name: 'Faculty of Economics and Business Administration', url: 'https://sze.hu/en/faculties/faculty-of-economics-and-business-administration' },
-      { name: 'Faculty of Law and Political Sciences', url: 'https://sze.hu/en/faculties/faculty-of-law-and-political-sciences' },
-      { name: 'Faculty of Health and Sport Sciences', url: 'https://sze.hu/en/faculties/faculty-of-health-and-sport-sciences' },
+      { name: 'Albert Kázmér Faculty of Mosonmagyaróvár', url: 'https://sze.hu/en/albert-kazmer-faculty' },
+      { name: 'Apáczai Csere János Faculty of Humanities, Education and Social Sciences', url: 'https://sze.hu/en/apaczai-faculty' },
+      { name: 'Audi Hungaria Faculty of Automotive Engineering', url: 'https://sze.hu/en/audi-hungaria-faculty' },
       { name: 'Deák Ferenc Faculty of Law and Political Sciences', url: 'https://dfkk.sze.hu/en' },
+      { name: 'Faculty of Architecture, Civil Engineering and Transport Sciences', url: 'https://sze.hu/en/faculty-of-architecture-civil-engineering-and-transport-sciences' },
+      { name: 'Faculty of Design and Performance Arts', url: 'https://sze.hu/en/faculty-of-design-and-performance-arts' },
+      { name: 'Faculty of Health and Sport Sciences', url: 'https://sze.hu/en/faculty-of-health-and-sport-sciences' },
+      { name: 'Faculty of Mechanical Engineering, Informatics and Electrical Engineering', url: 'https://sze.hu/en/faculty-of-mechanical-engineering-informatics-and-electrical-engineering' },
+      { name: 'Kautz Gyula Faculty of Business and Economics', url: 'https://sze.hu/en/kautz-faculty' },
     ],
     avg_rating: 4.1,
     review_count: 3,
     reviews: [
-      { id: 'er52', name: 'Klaus B.', rating: 4, title: 'Top engineering school with industry ties', body: 'The Audi partnership means real industry exposure during your studies. Great for mechanical and automotive engineering. Győr is a modern, clean city.', date: '2024-10-18' },
-      { id: 'er53', name: 'Priya S.', rating: 4, title: 'Strong IT programs', body: 'The computer science faculty is well-equipped and professors have industry backgrounds. Good internship opportunities through university partnerships.', date: '2024-07-08' },
-      { id: 'er54', name: 'Marco T.', rating: 4, title: 'Excellent for automotive engineering', body: 'If you want to work in the automotive industry, this is the place. Close ties with Audi and other manufacturers. Campus is modern and well-funded.', date: '2024-04-28' },
+      { id: 'er52', name: 'Friedrich Weber', rating: 4, title: 'Top engineering school with unmatched industry ties', body: 'The Audi Hungaria partnership means genuine industry exposure throughout your studies. The Audi Hungaria Faculty of Automotive Engineering is exceptional. Győr is a modern, well-connected city.', date: '2026-01-26' },
+      { id: 'er53', name: 'Anjali Mehta', rating: 4, title: 'Strong IT and informatics programs', body: 'The Faculty of Mechanical Engineering, Informatics and Electrical Engineering is very well-equipped and professors have real industry backgrounds. Good internship opportunities through university partnerships.', date: '2026-03-05' },
+      { id: 'er54', name: 'Diego Hernández', rating: 4, title: 'Excellent for automotive and transport engineering', body: 'If you want to work in the automotive industry, Széchenyi is the place. Close ties with Audi and other major manufacturers mean real career opportunities. Campus is modern and very well-funded.', date: '2026-04-07' },
     ],
   },
   {
@@ -831,9 +833,9 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
     avg_rating: 3.9,
     review_count: 3,
     reviews: [
-      { id: 'er55', name: 'Dmitri V.', rating: 4, title: 'Great engineering programs, low cost', body: 'Miskolc is one of the most affordable cities in Hungary for students. The engineering programs are solid and professors are very approachable. Highly recommend for budget-conscious students.', date: '2024-10-02' },
-      { id: 'er56', name: 'Sara H.', rating: 4, title: 'Hidden gem in northern Hungary', body: 'Not as well-known internationally as Debrecen or Pécs, but Miskolc offers excellent education at a fraction of the cost. The Avas neighbourhood is great for student accommodation.', date: '2024-07-20' },
-      { id: 'er57', name: 'Bogdan P.', rating: 4, title: 'Strong materials science tradition', body: 'The Materials Science faculty has a long and proud history. Great research facilities and professors with deep industry knowledge. The city has a lot of natural beauty nearby.', date: '2024-04-12' },
+      { id: 'er55', name: 'Vasil Petrov', rating: 4, title: 'Excellent engineering programs at a very low cost', body: 'Miskolc is one of the most affordable cities in Hungary for students. The engineering programs are solid and professors are very approachable. Highly recommended for budget-conscious international students.', date: '2026-01-19' },
+      { id: 'er56', name: 'Nadia Khalil', rating: 4, title: 'A hidden gem in northern Hungary', body: 'Not as internationally well-known as Debrecen or Pécs, but Miskolc offers genuinely excellent education at a fraction of the cost. The Avas neighbourhood has great affordable accommodation options.', date: '2026-02-24' },
+      { id: 'er57', name: 'Jakub Dvořák', rating: 4, title: 'Strong and proud materials science tradition', body: 'The Faculty of Materials and Chemical Engineering has a long and distinguished history. Research facilities are well-maintained and professors bring deep industry expertise. The natural surroundings of the city are beautiful.', date: '2026-03-29' },
     ],
   },
   {
@@ -863,9 +865,9 @@ export const STATIC_UNIVERSITIES: StaticUniversity[] = [
     avg_rating: 4.0,
     review_count: 3,
     reviews: [
-      { id: 'er58', name: 'Felix G.', rating: 4, title: 'Unique programs in a beautiful city', body: 'Sopron is a gorgeous medieval city near Vienna. The forestry and wood science programs are world-class and very specialized. Highly recommend if you want something different from the typical.', date: '2024-10-28' },
-      { id: 'er59', name: 'Lucie N.', rating: 4, title: 'Perfect for forestry and environmental science', body: 'The Forestry Faculty is one of the best in Central Europe. Amazing access to forests for field studies. The city is safe, beautiful, and has excellent transport to Austria.', date: '2024-07-15' },
-      { id: 'er60', name: 'Erik T.', rating: 4, title: 'Small but excellent', body: 'Smaller than other Hungarian universities but that means smaller classes and more personal attention from professors. The historic city setting is unique. Good connections to Vienna.', date: '2024-04-22' },
+      { id: 'er58', name: 'Lukas Fischer', rating: 4, title: 'Unique specialized programs in a beautiful medieval city', body: 'Sopron is a gorgeous medieval city near Vienna. The forestry and wood science programs are world-class and very specialized. Highly recommended if you want something different from a typical urban campus.', date: '2026-01-23' },
+      { id: 'er59', name: 'Marie Novák', rating: 4, title: 'Perfect for forestry and environmental sciences', body: 'The Faculty of Forestry is one of the best in Central Europe. Access to real forests for field studies is exceptional. The city is safe, beautiful, and has great transport connections to Austria.', date: '2026-02-27' },
+      { id: 'er60', name: 'Eero Mäkinen', rating: 4, title: 'Small but excellent with personal attention', body: 'Smaller than other Hungarian universities which means smaller class sizes and much more personal attention from professors. The historic medieval city setting is truly unique. Excellent rail connections to Vienna.', date: '2026-04-06' },
     ],
   },
   {

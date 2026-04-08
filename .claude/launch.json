@@ -3,9 +3,9 @@
   "configurations": [
     {
       "name": "studies-in-hungary",
-      "runtimeExecutable": "/bin/zsh",
-      "runtimeArgs": ["-c", "source ~/.nvm/nvm.sh && npm run dev -- --port 3001"],
-      "port": 3001
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 3000
     }
   ]
 }

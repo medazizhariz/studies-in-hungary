@@ -31,21 +31,27 @@ export default async function UniversitiesPage({ searchParams }: Props) {
     reviewAgg.set(r.entity_id, { sum: cur.sum + r.rating, count: cur.count + 1 })
   }
 
-  let unis: University[] = data?.length
-    ? (data ?? []).map((u: any) => {
-        const stats = reviewAgg.get(u.id)
-        return {
-          ...u,
-          avg_rating: stats ? stats.sum / stats.count : null,
-          review_count: stats?.count ?? 0,
-        }
-      })
-    : STATIC_UNIVERSITIES.map((u) => ({
-        id: u.id, name: u.name, city: u.city, description: u.description,
-        website: u.website, programs: u.programs, languages: u.languages,
-        logo_url: u.logo_url, image_url: u.images?.[0] ?? null, created_at: '',
-        avg_rating: u.avg_rating, review_count: u.review_count,
-      }))
+  // Build list: DB universities first, then any static universities not already in DB
+  const dbIds = new Set((data ?? []).map((u: any) => u.id))
+  const dbUnis: University[] = (data ?? []).map((u: any) => {
+    const stats = reviewAgg.get(u.id)
+    // Supplement avg_rating/review_count from static data if Supabase has none
+    const staticMatch = STATIC_UNIVERSITIES.find((s) => s.id === u.id)
+    return {
+      ...u,
+      avg_rating: stats ? stats.sum / stats.count : (staticMatch?.avg_rating ?? null),
+      review_count: stats?.count ?? staticMatch?.review_count ?? 0,
+    }
+  })
+  const staticOnlyUnis: University[] = STATIC_UNIVERSITIES
+    .filter((u) => !dbIds.has(u.id))
+    .map((u) => ({
+      id: u.id, name: u.name, city: u.city, description: u.description,
+      website: u.website, programs: u.programs, languages: u.languages,
+      logo_url: u.logo_url, image_url: u.images?.[0] ?? null, created_at: '',
+      avg_rating: u.avg_rating, review_count: u.review_count,
+    }))
+  let unis: University[] = [...dbUnis, ...staticOnlyUnis]
 
   // Apply client-side filters for static data
   if (city) unis = unis.filter((u) => u.city === city)

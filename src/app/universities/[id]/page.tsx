@@ -28,8 +28,8 @@ export default async function UniDetailPage({ params }: Props) {
 
   const { data: uni } = await supabase.from('universities').select('*').eq('id', id).single()
 
-  // Check static data if not in DB
-  const staticUni = !uni ? STATIC_UNIVERSITIES.find((u) => u.id === id) : null
+  // Always look up static data for supplemental fields (faculty links, reviews, degree levels, etc.)
+  const staticUni = STATIC_UNIVERSITIES.find((u) => u.id === id)
   if (!uni && !staticUni) notFound()
 
   const { data: dbReviews } = await supabase
@@ -37,6 +37,7 @@ export default async function UniDetailPage({ params }: Props) {
     .select('*, profiles(username, full_name, avatar_url)')
     .eq('entity_type', 'university')
     .eq('entity_id', id)
+    .eq('status', 'approved')
     .order('created_at', { ascending: false })
 
   // Check if the current user already submitted a review
@@ -70,7 +71,10 @@ export default async function UniDetailPage({ params }: Props) {
   const faculties = staticUni?.faculties ?? []
   const facultyLinks = staticUni?.facultyLinks ?? []
   const degreeLevels = staticUni?.degree_levels ?? []
-  const images = staticUni?.images ?? []
+  const dbImages: string[] = uni?.images ?? []
+  const staticImages: string[] = staticUni?.images ?? []
+  // DB images (from approved reviews) come first, then static fallback images
+  const images = [...dbImages, ...staticImages.filter((s) => !dbImages.includes(s))]
   const imageCaptions = staticUni?.imageCaptions ?? []
 
   const avgRating = reviews.length
