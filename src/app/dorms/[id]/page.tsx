@@ -36,6 +36,7 @@ export default async function DormDetailPage({ params }: Props) {
     .select('*, profiles(username, full_name, avatar_url)')
     .eq('entity_type', 'dorm')
     .eq('entity_id', id)
+    .eq('status', 'approved')
     .order('created_at', { ascending: false })
 
   // Check if the current user already submitted a review
@@ -51,13 +52,16 @@ export default async function DormDetailPage({ params }: Props) {
     userHasReview = !!existing
   }
 
-  const reviews = dbReviews?.length
-    ? dbReviews
-    : (staticDorm?.reviews ?? []).map((r) => ({
-        id: r.id, user_id: '', entity_type: 'dorm' as const, entity_id: id,
-        rating: r.rating, title: r.title, body: r.body, created_at: r.date,
-        profiles: { username: r.name, full_name: r.name, avatar_url: null },
-      }))
+  const staticReviews = (staticDorm?.reviews ?? []).map((r) => ({
+    id: r.id, user_id: '', entity_type: 'dorm' as const, entity_id: id,
+    rating: r.rating, title: r.title, body: r.body, created_at: r.date,
+    profiles: { username: r.name, full_name: r.name, avatar_url: null },
+  }))
+  const dbReviewIds = new Set((dbReviews ?? []).map((r: any) => r.id))
+  const reviews = [
+    ...(dbReviews ?? []),
+    ...staticReviews.filter((r) => !dbReviewIds.has(r.id)),
+  ]
 
   const name = dorm?.name ?? staticDorm?.name ?? ''
   const city = dorm?.city ?? staticDorm?.city ?? ''

@@ -53,13 +53,16 @@ export default async function UniDetailPage({ params }: Props) {
     userHasReview = !!existing
   }
 
-  const reviews = dbReviews?.length
-    ? dbReviews
-    : (staticUni?.reviews ?? []).map((r) => ({
-        id: r.id, user_id: '', entity_type: 'university' as const, entity_id: id,
-        rating: r.rating, title: r.title, body: r.body, created_at: r.date,
-        profiles: { username: r.name, full_name: r.name, avatar_url: null },
-      }))
+  const staticReviews = (staticUni?.reviews ?? []).map((r) => ({
+    id: r.id, user_id: '', entity_type: 'university' as const, entity_id: id,
+    rating: r.rating, title: r.title, body: r.body, created_at: r.date,
+    profiles: { username: r.name, full_name: r.name, avatar_url: null },
+  }))
+  const dbReviewIds = new Set((dbReviews ?? []).map((r: any) => r.id))
+  const reviews = [
+    ...(dbReviews ?? []),
+    ...staticReviews.filter((r) => !dbReviewIds.has(r.id)),
+  ]
 
   const name = uni?.name ?? staticUni?.name ?? ''
   const city = uni?.city ?? staticUni?.city ?? ''
