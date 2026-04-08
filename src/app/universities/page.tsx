@@ -51,7 +51,7 @@ export default async function UniversitiesPage({ searchParams }: Props) {
       logo_url: u.logo_url, image_url: u.images?.[0] ?? null, created_at: '',
       avg_rating: u.avg_rating, review_count: u.review_count,
     }))
-  let unis: University[] = [...dbUnis, ...staticOnlyUnis]
+  let unis: University[] = [...dbUnis, ...staticOnlyUnis].filter((u) => u.image_url)
 
   // Apply client-side filters for static data
   if (city) unis = unis.filter((u) => u.city === city)
