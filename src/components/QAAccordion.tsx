@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import ReportButton from './ReportButton'
 import type { StaticQA } from '@/lib/staticData'
 import { MOCK_QA_AUTHORS } from '@/lib/staticData'
@@ -55,11 +56,13 @@ function AuthorAvatar({ author, size = 'sm' }: { author: { name: string; avatar:
   )
 }
 
+// Replies saved to Supabase answers table for persistence
 type Props = { questions: StaticQA[] }
 
 type FilterMode = 'all' | 'answered' | 'unanswered'
 
 export default function QAAccordion({ questions }: Props) {
+  const router = useRouter()
   const [expanded, setExpanded] = useState<string | null>(null)
   const [votes, setVotes] = useState<Record<string, number>>(
     Object.fromEntries(questions.map((q) => [q.id, q.upvotes]))
@@ -69,18 +72,21 @@ export default function QAAccordion({ questions }: Props) {
   )
   const [replyOpen, setReplyOpen] = useState<string | null>(null)
   const [replyText, setReplyText] = useState('')
-  const [localReplies, setLocalReplies] = useState<Record<string, Array<{ id: string; author: { name: string; avatar: string }; body: string; date: string; upvotes: number }>>>({})
+  const [submitting, setSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState('')
   const [filter, setFilter] = useState<FilterMode>('all')
-  const [currentUserName, setCurrentUserName] = useState<string | null>(null)
-  const [currentUserAvatar, setCurrentUserAvatar] = useState<string>('')
+  const [currentUser, setCurrentUser] = useState<{ id: string; name: string; avatar: string } | null>(null)
 
   useEffect(() => {
     const supabase = createClient()
     supabase.auth.getUser().then(({ data }) => {
       if (data.user) {
         const name = data.user.user_metadata?.full_name || data.user.email?.split('@')[0] || 'Anonymous'
-        setCurrentUserName(name)
-        setCurrentUserAvatar(`https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(name)}`)
+        setCurrentUser({
+          id: data.user.id,
+          name,
+          avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(name)}`,
+        })
       }
     })
   }, [])
@@ -100,23 +106,63 @@ export default function QAAccordion({ questions }: Props) {
     })
   }
 
-  const submitReply = (questionId: string) => {
+  const submitReply = async (faqQuestion: StaticQA) => {
     if (!replyText.trim()) return
-    const name = currentUserName ?? MOCK_QA_AUTHORS[Math.floor(Math.random() * MOCK_QA_AUTHORS.length)].name
-    const avatar = currentUserAvatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(name)}`
-    const newReply = {
-      id: `local-${Date.now()}`,
-      author: { name, avatar },
-      body: replyText.trim(),
-      date: new Date().toISOString().slice(0, 10),
-      upvotes: 0,
+    if (!currentUser) { router.push('/auth/login'); return }
+    setSubmitting(true)
+    setSubmitError('')
+
+    const supabase = createClient()
+
+    // Ensure profile exists
+    await supabase.from('profiles').upsert({ id: currentUser.id }, { onConflict: 'id', ignoreDuplicates: true })
+
+    // Check if this FAQ question already has a DB entry
+    let questionDbId: string | null = null
+    const { data: existing } = await supabase
+      .from('questions')
+      .select('id')
+      .eq('title', faqQuestion.title)
+      .maybeSingle()
+
+    if (existing) {
+      questionDbId = existing.id
+    } else {
+      // Create a DB question from this FAQ item so replies persist
+      const { data: created, error: createErr } = await supabase
+        .from('questions')
+        .insert({
+          user_id: currentUser.id,
+          title: faqQuestion.title,
+          body: faqQuestion.body || null,
+          category: faqQuestion.category || null,
+        })
+        .select('id')
+        .single()
+      if (createErr || !created) {
+        setSubmitError(createErr?.message ?? 'Failed to save. Please try again.')
+        setSubmitting(false)
+        return
+      }
+      questionDbId = created.id
     }
-    setLocalReplies((prev) => ({
-      ...prev,
-      [questionId]: [...(prev[questionId] ?? []), newReply],
-    }))
-    setReplyText('')
-    setReplyOpen(null)
+
+    const { error: answerErr } = await supabase.from('answers').insert({
+      question_id: questionDbId,
+      user_id: currentUser.id,
+      body: replyText.trim(),
+    })
+
+    if (answerErr) {
+      setSubmitError(answerErr.message)
+      setSubmitting(false)
+    } else {
+      setReplyText('')
+      setReplyOpen(null)
+      setSubmitting(false)
+      // Redirect to the question detail page so user can see their persistent answer
+      router.push(`/qa/${questionDbId}`)
+    }
   }
 
   const filtered = questions.filter((q) => {
@@ -161,9 +207,7 @@ export default function QAAccordion({ questions }: Props) {
         const catColor = CAT_COLORS[q.category] ?? 'bg-gray-100 text-gray-700'
         const userVote = voted[q.id]
         const author = q.author ?? MOCK_QA_AUTHORS[qi % MOCK_QA_AUTHORS.length]
-        const staticReplies = q.replies ?? []
-        const addedReplies = localReplies[q.id] ?? []
-        const allReplies = [...staticReplies, ...addedReplies]
+        const allReplies = q.replies ?? []
         const isAnswered = !!q.answer
 
         return (
@@ -278,19 +322,20 @@ export default function QAAccordion({ questions }: Props) {
                         rows={3}
                         className="input resize-none text-sm"
                       />
+                      {submitError && <p className="text-xs text-red-600">{submitError}</p>}
                       <div className="flex gap-2 justify-end">
                         <button
-                          onClick={() => { setReplyOpen(null); setReplyText('') }}
+                          onClick={() => { setReplyOpen(null); setReplyText(''); setSubmitError('') }}
                           className="btn-secondary text-xs px-3 py-1.5"
                         >
                           Cancel
                         </button>
                         <button
-                          onClick={() => submitReply(q.id)}
-                          disabled={!replyText.trim()}
+                          onClick={() => submitReply(q)}
+                          disabled={!replyText.trim() || submitting}
                           className="btn-primary text-xs px-3 py-1.5"
                         >
-                          Post Reply
+                          {submitting ? 'Posting…' : 'Post Reply'}
                         </button>
                       </div>
                     </div>

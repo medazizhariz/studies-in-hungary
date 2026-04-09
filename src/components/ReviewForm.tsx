@@ -52,6 +52,21 @@ export default function ReviewForm({ entityType, entityId, onClose }: Props) {
 
     const hasMedia = previews.length > 0
 
+    // Upload photos to Supabase storage
+    const mediaUrls: string[] = []
+    if (hasMedia) {
+      for (const { file } of previews) {
+        const ext = file.name.split('.').pop()
+        const path = `${user.id}/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`
+        const { error: uploadErr } = await supabase.storage
+          .from('review-media')
+          .upload(path, file, { upsert: false })
+        if (uploadErr) { setError(`Upload failed: ${uploadErr.message}`); setLoading(false); return }
+        const { data: urlData } = supabase.storage.from('review-media').getPublicUrl(path)
+        mediaUrls.push(urlData.publicUrl)
+      }
+    }
+
     const { error: err } = await supabase.from('reviews').insert({
       user_id: user.id,
       entity_type: entityType,
@@ -60,6 +75,7 @@ export default function ReviewForm({ entityType, entityId, onClose }: Props) {
       title: title.trim() || null,
       body: body.trim() || null,
       status: hasMedia ? 'pending' : 'approved',
+      media_urls: mediaUrls.length > 0 ? mediaUrls : [],
     })
 
     if (err) {

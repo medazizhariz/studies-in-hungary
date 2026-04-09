@@ -4,7 +4,8 @@ export function proxyImage(url: string): string {
     const clean = url.replace(/^https?:\/\//, '')
     return `https://images.weserv.nl/?url=${encodeURI(clean)}&w=800&output=jpg`
   }
-  return url
+  // Encode spaces and other invalid URI characters in local paths
+  return url.replace(/ /g, '%20')
 }
 
 export function formatDate(dateStr: string) {

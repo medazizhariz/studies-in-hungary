@@ -28,6 +28,19 @@ export default function ReviewCard({ review }: Props) {
       {review.body && (
         <p className="text-sm text-gray-600 leading-relaxed mb-3">{review.body}</p>
       )}
+      {review.media_urls?.length > 0 && (
+        <div className="flex flex-wrap gap-2 mb-3">
+          {review.media_urls.map((url, i) => (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              key={i}
+              src={url}
+              alt={`Review photo ${i + 1}`}
+              className="w-24 h-24 object-cover rounded-lg border border-gray-200"
+            />
+          ))}
+        </div>
+      )}
       <div className="flex justify-end">
         <ReportButton />
       </div>

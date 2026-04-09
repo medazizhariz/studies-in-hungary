@@ -50,6 +50,8 @@ export type Review = {
   rating: number
   title: string | null
   body: string | null
+  status: 'pending' | 'approved'
+  media_urls: string[]
   created_at: string
   profiles?: Pick<Profile, 'username' | 'avatar_url' | 'full_name'>
 }
