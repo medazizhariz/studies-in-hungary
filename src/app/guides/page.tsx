@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { STATIC_GUIDES } from '@/lib/staticData'
 import { createClient } from '@/lib/supabase/client'
+import SaveButton from '@/components/SaveButton'
 
 const CATEGORIES = ['All', ...Array.from(new Set(STATIC_GUIDES.map((g) => g.category)))]
 
@@ -44,41 +45,52 @@ function GuideCard({
 
   return (
     <div className="card overflow-hidden h-full">
-      {/* Header */}
-      <button
-        onClick={onToggle}
-        className="w-full text-left p-5 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
-      >
-        <div className="flex items-start gap-4">
-          <div className="w-10 h-10 rounded-xl bg-primary-50 dark:bg-primary-900/30 flex items-center justify-center text-xl shrink-0">
-            {guide.icon}
-          </div>
-          <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-2 mb-1">
-              <span className="badge bg-primary-50 text-primary-700 text-xs dark:bg-primary-900/40 dark:text-primary-300">{guide.category}</span>
+      {/* Header — split into clickable area + action buttons to avoid nested buttons */}
+      <div className="flex items-stretch hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+        <button
+          onClick={onToggle}
+          className="flex-1 text-left p-5 min-w-0"
+        >
+          <div className="flex items-start gap-4">
+            <div className="w-10 h-10 rounded-xl bg-primary-50 dark:bg-primary-900/30 flex items-center justify-center text-xl shrink-0">
+              {guide.icon}
             </div>
-            <h3 className="font-bold text-sm text-gray-900 dark:text-gray-100 leading-snug mb-1">{guide.title}</h3>
-            <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed line-clamp-2">{guide.description}</p>
-
-            {/* Progress */}
-            <div className="mt-3 flex items-center gap-2">
-              <div className="flex-1 h-1.5 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
-                <div
-                  className="h-full bg-primary-500 rounded-full transition-all duration-300"
-                  style={{ width: `${pct}%` }}
-                />
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-2 mb-1">
+                <span className="badge bg-primary-50 text-primary-700 text-xs dark:bg-primary-900/40 dark:text-primary-300">{guide.category}</span>
               </div>
-              <span className="text-xs text-gray-400 font-medium shrink-0">
-                {completed}/{total} steps
-              </span>
-              {completed === total && total > 0 && (
-                <span className="text-xs text-green-600 font-bold">✓ Done!</span>
-              )}
+              <h3 className="font-bold text-sm text-gray-900 dark:text-gray-100 leading-snug mb-1">{guide.title}</h3>
+              <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed line-clamp-2">{guide.description}</p>
+
+              {/* Progress */}
+              <div className="mt-3 flex items-center gap-2">
+                <div className="flex-1 h-1.5 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-primary-500 rounded-full transition-all duration-300"
+                    style={{ width: `${pct}%` }}
+                  />
+                </div>
+                <span className="text-xs text-gray-400 font-medium shrink-0">
+                  {completed}/{total} steps
+                </span>
+                {completed === total && total > 0 && (
+                  <span className="text-xs text-green-600 font-bold">✓ Done!</span>
+                )}
+              </div>
             </div>
           </div>
-          <span className="text-gray-400 text-xs mt-1 shrink-0">{isOpen ? '▲' : '▼'}</span>
+        </button>
+        {/* Save + toggle arrow — outside the main button to avoid nested button error */}
+        <div className="flex flex-col items-center justify-center gap-2 pr-4 shrink-0">
+          <SaveButton itemType="guide" itemId={guide.id} itemName={guide.title} />
+          <span
+            onClick={onToggle}
+            className="cursor-pointer text-gray-400 text-xs select-none"
+          >
+            {isOpen ? '▲' : '▼'}
+          </span>
         </div>
-      </button>
+      </div>
 
       {/* Steps */}
       {isOpen && (

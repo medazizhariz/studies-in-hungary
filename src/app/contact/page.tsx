@@ -1,36 +1,33 @@
 'use client'
 
-import { useState, useRef } from 'react'
-import emailjs from '@emailjs/browser'
+import { useState } from 'react'
 
 export default function ContactPage() {
-  const formRef = useRef<HTMLFormElement>(null)
+  const [fields, setFields] = useState({ name: '', email: '', subject: '', message: '' })
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState('')
 
+  const set = (k: keyof typeof fields) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setFields((f) => ({ ...f, [k]: e.target.value }))
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!formRef.current) return
     setLoading(true)
     setError('')
 
-    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
-    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-
-    if (!serviceId || !templateId || !publicKey) {
-      setError('Email service is not configured. Please contact us directly at studiesinhungary1@gmail.com')
-      setLoading(false)
-      return
-    }
-
     try {
-      await emailjs.sendForm(serviceId, templateId, formRef.current, publicKey)
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(fields),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error ?? 'Failed to send')
       setSuccess(true)
-      formRef.current.reset()
-    } catch {
-      setError('Failed to send message. Please try again or email us at studiesinhungary1@gmail.com')
+      setFields({ name: '', email: '', subject: '', message: '' })
+    } catch (err: any) {
+      setError(err.message ?? 'Failed to send message. Please email us directly at studiesinhungary1@gmail.com')
     } finally {
       setLoading(false)
     }
@@ -62,18 +59,19 @@ export default function ContactPage() {
           </div>
         ) : (
           <div className="card p-6 md:p-8">
-            <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
                     Name <span className="text-red-500">*</span>
                   </label>
                   <input
-                    name="from_name"
                     type="text"
                     required
                     className="input"
                     placeholder="Your full name"
+                    value={fields.name}
+                    onChange={set('name')}
                   />
                 </div>
                 <div>
@@ -81,11 +79,12 @@ export default function ContactPage() {
                     Email <span className="text-red-500">*</span>
                   </label>
                   <input
-                    name="reply_to"
                     type="email"
                     required
                     className="input"
                     placeholder="your@email.com"
+                    value={fields.email}
+                    onChange={set('email')}
                   />
                 </div>
               </div>
@@ -95,11 +94,12 @@ export default function ContactPage() {
                   Subject <span className="text-red-500">*</span>
                 </label>
                 <input
-                  name="subject"
                   type="text"
                   required
                   className="input"
                   placeholder="What is this about?"
+                  value={fields.subject}
+                  onChange={set('subject')}
                 />
               </div>
 
@@ -108,12 +108,13 @@ export default function ContactPage() {
                   Message <span className="text-red-500">*</span>
                 </label>
                 <textarea
-                  name="message"
                   required
                   rows={6}
                   className="input resize-none"
                   placeholder="Write your message here..."
                   maxLength={3000}
+                  value={fields.message}
+                  onChange={set('message')}
                 />
               </div>
 

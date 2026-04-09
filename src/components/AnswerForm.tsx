@@ -1,12 +1,14 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 
 type Props = { questionId: string; userId: string }
 
 export default function AnswerForm({ questionId, userId }: Props) {
   const supabase = createClient()
+  const router = useRouter()
   const [body, setBody] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -30,7 +32,8 @@ export default function AnswerForm({ questionId, userId }: Props) {
       setError(err.message)
       setLoading(false)
     } else {
-      window.location.reload()
+      setBody('')
+      router.refresh()
     }
   }
 

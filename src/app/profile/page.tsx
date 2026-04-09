@@ -30,6 +30,16 @@ export default async function ProfilePage() {
     .order('created_at', { ascending: false })
     .limit(5)
 
+  const { data: savedItems } = await supabase
+    .from('saved_items')
+    .select('*')
+    .eq('user_id', user.id)
+    .order('created_at', { ascending: false })
+
+  const savedUniversities = savedItems?.filter((s) => s.item_type === 'university') ?? []
+  const savedDorms = savedItems?.filter((s) => s.item_type === 'dorm') ?? []
+  const savedGuides = savedItems?.filter((s) => s.item_type === 'guide') ?? []
+
   return (
     <div className="max-w-3xl mx-auto px-4 md:px-8 py-8">
       <h1 className="text-3xl font-black text-gray-900 mb-8">My Profile</h1>
@@ -40,6 +50,59 @@ export default async function ProfilePage() {
         </div>
 
         <div className="space-y-6">
+          {/* Saved Items */}
+          <div className="card p-5">
+            <h2 className="font-bold text-gray-900 mb-4">Saved ({savedItems?.length ?? 0})</h2>
+            {!savedItems?.length ? (
+              <p className="text-sm text-gray-400">Nothing saved yet. Use the Save button on universities, dorms, and guides.</p>
+            ) : (
+              <div className="space-y-4">
+                {savedUniversities.length > 0 && (
+                  <div>
+                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Universities</p>
+                    <div className="space-y-1.5">
+                      {savedUniversities.map((s: any) => (
+                        <a key={s.id} href={`/universities/${s.item_id}`}
+                          className="flex items-center gap-2 text-sm text-gray-700 hover:text-primary-700 py-1">
+                          <span>🎓</span>
+                          <span className="font-medium leading-snug">{s.item_name ?? s.item_id}</span>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {savedDorms.length > 0 && (
+                  <div>
+                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Dorms</p>
+                    <div className="space-y-1.5">
+                      {savedDorms.map((s: any) => (
+                        <a key={s.id} href={`/dorms/${s.item_id}`}
+                          className="flex items-center gap-2 text-sm text-gray-700 hover:text-primary-700 py-1">
+                          <span>🏠</span>
+                          <span className="font-medium leading-snug">{s.item_name ?? s.item_id}</span>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {savedGuides.length > 0 && (
+                  <div>
+                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Guides</p>
+                    <div className="space-y-1.5">
+                      {savedGuides.map((s: any) => (
+                        <a key={s.id} href="/guides"
+                          className="flex items-center gap-2 text-sm text-gray-700 hover:text-primary-700 py-1">
+                          <span>📋</span>
+                          <span className="font-medium leading-snug">{s.item_name ?? s.item_id}</span>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+
           {/* My Reviews */}
           <div className="card p-5">
             <h2 className="font-bold text-gray-900 mb-4">My Reviews ({reviews?.length ?? 0})</h2>

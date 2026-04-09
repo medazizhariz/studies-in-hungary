@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import StarRating from './StarRating'
+import SaveButton from './SaveButton'
 import { proxyImage } from '@/lib/utils'
 import type { Dorm } from '@/types'
 
@@ -14,7 +15,12 @@ export default function DormCard({ dorm }: Props) {
   const img = proxyImage(rawImg)
 
   return (
-    <div className="card overflow-hidden hover:-translate-y-1 transition-transform flex flex-col">
+    <div className="card overflow-hidden hover:-translate-y-1 transition-transform flex flex-col relative">
+      {/* Save button */}
+      <div className="absolute top-2 left-2 z-10">
+        <SaveButton itemType="dorm" itemId={dorm.id} itemName={dorm.name} />
+      </div>
+
       <Link href={`/dorms/${dorm.id}`} className="block">
         <div className="relative h-44 bg-gray-100 overflow-hidden">
           <img
